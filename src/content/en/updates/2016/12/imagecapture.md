@@ -128,7 +128,7 @@ object that provides access to non live available camera options.
 Correspondingly, starting in Chrome 61, `ImageCapture.getPhotoSettings()`
 returns a
 [`PhotoSettings`](https://w3c.github.io/mediacapture-image/#dictdef-photosettings)
-with the concrete current settings. The photo resolution, red eye reduction and
+object with the concrete current settings. The photo resolution, red eye reduction and
 flash mode (except torch) belong to this section, for example:
 
     var widthSlider = document.querySelector('input[type=range]');
