@@ -1,8 +1,8 @@
-project_path: /web/_project.yaml
-book_path: /web/tools/_book.yaml
+project_path: /web/tools/chrome-devtools/_project.yaml
+book_path: /web/tools/chrome-devtools/_book.yaml
 description: Registrar no Console é algo eficaz para inspecionar o que sua página ou seu aplicativo faz. Vamos começar com console.log() e explorar outros usos avançados.
 
-{# wf_updated_on: 2015-05-11 #}
+{# wf_updated_on: 2020-07-10 #}
 {# wf_published_on: 2015-04-13 #}
 
 # Diagnosticar e registrar no Console {: .page-title }
@@ -203,7 +203,7 @@ Teste este código:
 
 ### Formatar elementos de DOM como objetos JavaScript
 
-Por padrão, elementos de DOM são registrados no console como representações do HTML, mas às vezes você pode querer acessar o elemento de DOM como um objeto JavaScript e verificar suas propriedades. Você pode usar o especificador de string `%o` (ver acima) ou usar o `console.dir` para fazer isso: 
+Por padrão, elementos de DOM são registrados no console como representações do HTML, mas às vezes você pode querer acessar o elemento de DOM como um objeto JavaScript e verificar suas propriedades. Você pode usar o especificador de string `%O` (ver acima) ou usar o `console.dir` para fazer isso: 
 
 ![Registrar um elemento usando dir()](images/dir-element.png)
 

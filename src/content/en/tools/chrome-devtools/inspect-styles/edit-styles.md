@@ -1,9 +1,10 @@
-project_path: /web/_project.yaml
-book_path: /web/tools/_book.yaml
+project_path: /web/tools/chrome-devtools/_project.yaml
+book_path: /web/tools/chrome-devtools/_book.yaml
 description: Use the Styles pane in Chrome DevTools to inspect and modify the CSS styles associated to an element.
 
-{# wf_updated_on: 2017-07-25 #}
+{# wf_updated_on: 2020-07-10 #}
 {# wf_published_on: 2015-04-13 #}
+{# wf_blink_components: Platform>DevTools #}
 
 # Edit Styles {: .page-title }
 
@@ -320,3 +321,7 @@ To view a page in print mode:
 1. Select **More Tools** > **Rendering Settings**. The Rendering Settings
    tab opens at the bottom of your DevTools window.
 1. Set **Emulate media** to **Print**.
+
+## Feedback {: #feedback }
+
+{% include "web/_shared/helpful.html" %}

@@ -1,8 +1,8 @@
-project_path: /web/_project.yaml
-book_path: /web/tools/_book.yaml
+project_path: /web/tools/chrome-devtools/_project.yaml
+book_path: /web/tools/chrome-devtools/_book.yaml
 description: Pelajari cara menggunakan Chrome dan DevTools untuk menemukan masalah memori yang memengaruhi kinerja laman, termasuk kebocoran memori, penggelembungan memori, dan pengumpulan sampah yang terlalu sering.
 
-{# wf_updated_on: 2015-08-03 #}
+{# wf_updated_on: 2020-07-10 #}
 {# wf_published_on: 2015-04-13 #}
 
 # Memperbaiki Masalah Memori {: .page-title }
@@ -150,7 +150,7 @@ dari saat dimulai ("dimulai" disini adalah titik setelah pengumpulan sampah
 secara paksa). Dalam kondisi nyata, jika Anda melihat pola meningkatnya
 ukuran heap JS atau ukuran simpul, ini berarti ada kemungkinan kebocoran memori.
 
-[recording]: https://developers.google.com/web/tools/chrome-devtools/profile/evaluate-performance/timeline-tool#make-a-recording
+[recording]: /web/tools/chrome-devtools/profile/evaluate-performance/timeline-tool#make-a-recording
 
 [cg]: imgs/collect-garbage.png
 

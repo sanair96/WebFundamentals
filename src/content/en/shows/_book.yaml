@@ -16,12 +16,21 @@ upper_tabs:
         - title: New in Chrome
           path: https://www.youtube.com/playlist?list=PLNYkxOF6rcIDfz8XEA3loxY32tYh7CI3m
           status: external
+        - title: New in Chrome DevTools
+          path: https://www.youtube.com/watch?list=PLNYkxOF6rcIBDSojZWBv4QJNoT4GNYzQD
+          status: external
         - include: /web/shows/designer-vs-developer/_toc.yaml
         - include: /web/shows/ttt/_toc.yaml
         - title: A11ycasts with Rob Dodson
           path: https://www.youtube.com/playlist?list=PLNYkxOF6rcICWx0C9LVWWVqvHlYJyqw7g
           status: external
-        - include: /web/shows/http203/_toc.yaml
+        - title: HTTP203
+          section:
+          - title: YouTube
+            path: https://www.youtube.com/playlist?list=PLNYkxOF6rcIAKIQFsNbV0JDws_G_bnNo9
+            status: external
+          - title: Podcasts
+            path: /web/shows/http203/podcast/
         - include: /web/shows/supercharged/_toc.yaml
         - title: Developer Diary with Paul Lewis
           path: https://www.youtube.com/playlist?list=PLNYkxOF6rcIBykcJ7bvTpqU7vt-oey72J

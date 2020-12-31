@@ -1,8 +1,8 @@
-project_path: /web/_project.yaml
-book_path: /web/tools/_book.yaml
+project_path: /web/tools/chrome-devtools/_project.yaml
+book_path: /web/tools/chrome-devtools/_book.yaml
 description:检查和编辑页面的 HTML 与 CSS。
 
-{# wf_updated_on:2016-01-28 #}
+{# wf_updated_on:2020-12-14 #}
 {# wf_published_on:2015-04-13 #}
 
 # 检查和编辑页面与样式 {: .page-title }
@@ -28,7 +28,7 @@ description:检查和编辑页面的 HTML 与 CSS。
 要实时编辑 DOM 节点，只需双击[选定元素](#inspect-an-element)，然后进行更改：
 
 
-<video src="animations/edit-element-name.mp4" style="max-width:100%;"
+<video src="animations-img/edit-element-name.mp4" style="max-width:100%;"
        loop muted autoplay controls></video>
 
 DOM 树视图会显示树的当前状态；可能会与最初因其他原因加载的 HTML 不匹配。
@@ -79,7 +79,7 @@ DOM 树视图会显示树的当前状态；可能会与最初因其他原因加�
 
 ## 查看本地更改
 
-<video src="animations/revisions.mp4" style="max-width:100%;"
+<video src="animations-img/revisions.mp4" style="max-width:100%;"
        autoplay loop muted controls></video>
 
 要查看对页面所做实时编辑的历史记录，请执行以下操作：

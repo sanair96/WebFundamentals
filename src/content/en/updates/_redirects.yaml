@@ -1,6 +1,42 @@
-# ATTENTION - changes made to this file not in GitHub will be over written!
+#
+# ATTENTION: Put redirects for content migrated to web.dev in /en/_redirects.yaml
+#
 
 redirects:
+
+- from: /web/updates/nic
+  to: /web/updates/2020/11/nic87
+
+# Redirects for TWA content
+
+- from: /web/updates/2019/02/using-twa
+  to: /web/android/trusted-web-activity/
+
+- from: /web/updates/2019/08/twas-quickstart
+  to: /web/android/trusted-web-activity/quick-start/
+
+- from: /web/updates/2020/01/twa-android-browser-helper
+  to: /web/android/trusted-web-activity/android-browser-helper-migration/
+
+- from: /web/updates/2020/01/twa-multi-origin
+  to: /web/android/trusted-web-activity/multi-origin/
+
+- from: /web/updates/2020/02/twa-lay-of-the-land
+  to: /web/android/trusted-web-activity/lay-of-the-land/
+
+- from: /web/updates/2020/03/trusted-web-activity-passing-information
+  to: /web/android/trusted-web-activity/query-parameters/
+
+- from: /web/updates/2020/twa-android-browser-helper
+  to: /web/updates/2020/01/twa-android-browser-helper
+
+- from: /web/updates/2018/06/fresher-sw
+  to: /web/android/trusted-web-activity/
+
+- from: /web/updates/2017/10/using-twa
+  to: /web/android/trusted-web-activity/
+
+# Redirects for content migrated from H5R
 
 - from: /web/updates/2011/06/HTML5-Libraries---Late-June
   to: /web/updates/2011/06/HTML5-Libraries-Late-June
@@ -263,14 +299,16 @@ redirects:
 - from: /web/updates/2015/09/tab-discarding-in-chrome-46
   to: /web/updates/2015/09/tab-discarding
 
-- from: /web/updates/2015/09/using-manifest-to-set-sitewide-theme-color
-  to: /web/updates/2015/08/using-manifest-to-set-sitewide-theme-color
-
 - from: /web/updates/2015/09/using-web-app-manifest-to-set-solid-color-loading-screen
   to: /web/updates/2015/08/using-web-app-manifest-to-set-solid-color-loading-screen
 
 - from: /web/updates/2016/04/geolocation-on-secure-contexts-
   to: /web/updates/2016/04/geolocation-on-secure-contexts-only
+
+- from: /web/updates/2015/05/19/...
+  to: /web/updates/2015/05/...
+
+# Redirects for tags & pages
 
 - from: /web/updates/tag/datalist
   to: /web/updates/tags/datalist
@@ -313,6 +351,3 @@ redirects:
 
 - from: /web/updates/chrome-devtools/...
   to: /web/updates/devtools/
-
-- from: /web/updates/2015/05/19/...
-  to: /web/updates/2015/05/...

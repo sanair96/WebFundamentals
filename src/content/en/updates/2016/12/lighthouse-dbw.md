@@ -70,7 +70,7 @@ and accessibility tips, and end-to-end help on making quality apps.
 better on the web. In other words, help them modernize and optimize their web
 applications. Oftentimes, web devs use outdated practices, anti-patterns, or hit
 known performance pitfalls without realizing it. For example, it is
-[widely known](/web/fundamentals/design-and-ui/animations/) that JS-based
+[widely known](/web/fundamentals/design-and-ux/animations/) that JS-based
 animations should be done with [`requestAnimationFrame()`][raf] instead of
 [`setInterval()`][setinterval]. However, if the developer is unaware of the
 newer API, their web app needlessly suffers.
@@ -131,8 +131,6 @@ For all the details on the latest in Lighthouse, see the
 Github. As always, [hit us up][contribs] to [report bugs][lhbugs], file feature
 requests, or brainstorm [ideas](https://github.com/GoogleChrome/lighthouse/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+bug%22) on what you'd like
 to see next.
-
-{% include "comment-widget.html" %}
 
 [crx]: https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk
 [contribs]: https://github.com/GoogleChrome/lighthouse/graphs/contributors

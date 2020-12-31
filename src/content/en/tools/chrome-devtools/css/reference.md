@@ -1,15 +1,17 @@
-project_path: /web/_project.yaml
-book_path: /web/tools/_book.yaml
+project_path: /web/tools/chrome-devtools/_project.yaml
+book_path: /web/tools/chrome-devtools/_book.yaml
 description: Discover new workflows for viewing and changing CSS in Chrome DevTools.
 
-{# wf_updated_on: 2017-08-01 #}
+{# wf_updated_on: 2020-11-12 #}
 {# wf_published_on: 2017-06-09 #}
+{# wf_blink_components: Platform>DevTools #}
 
 {% include "web/tools/chrome-devtools/_shared/styles.html" %}
 
 # CSS Reference {: .page-title }
 
 {% include "web/_shared/contributors/kaycebasques.html" %}
+{% include "web/_shared/contributors/jecelynyeen.html" %}
 
 Discover new workflows in this comprehensive reference of Chrome DevTools
 features related to viewing and changing CSS.
@@ -155,7 +157,7 @@ All** checkbox.
 
 ### Toggle a pseudo-class {: #pseudo-class }
 
-To toggle a pseudo-class like `:active`, `:focus`, `:hover`, or `:visited`:
+To toggle a pseudo-class like `:active`, `:focus`, `:hover`, `:visited`, `:focus-within` or `focus-visible`:
 
 1. [Select an element](#select).
 1. On the **Elements** panel, go to the **Styles** tab.
@@ -182,9 +184,62 @@ tutorial.
 
 To view a page in print mode:
 
-1. Open the [Command Menu](/web/tools/chrome-devtools/ui#command-menu).
+1. Open the [Command Menu](/web/tools/chrome-devtools/command-menu).
 1. Start typing `Rendering` and select `Show Rendering`.
 1. For the **Emulate CSS Media** dropdown, select **print**.
+
+### View used and unused CSS with the Coverage tab {: #coverage }
+
+The Coverage tab shows you what CSS a page actually uses.
+
+1. Press <kbd>Command</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> (Mac) or
+   <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> (Windows, Linux, Chrome OS)
+   while DevTools is in focus to open the Command Menu.
+1. Start typing `coverage` and select **Show Coverage**. The Coverage tab appears.
+
+     <figure>
+       <img src="imgs/command-menu.png"
+            alt="Opening the Coverage tab from the Command Menu."/>
+       <figcaption>
+         <b>Figure 8</b>. Opening the Coverage tab from the Command Menu
+       </figcaption>
+     </figure>
+
+     <figure>
+       <img src="imgs/coverage-empty.png"
+            alt="The Coverage tab."/>
+       <figcaption>
+         <b>Figure 9</b>. The Coverage tab 
+       </figcaption>
+     </figure>
+
+1. Click **Start Instrumenting Coverage And Reload Page** ![Start Instrumenting Coverage
+   And Reload Page](imgs/reload.png){: .inline-icon }. The page reloads and the Coverage
+   tab provides an overview of how much CSS (and JavaScript) is used from each file that the
+   browser loads. Green represents used CSS. Red represents unused CSS.
+
+     <figure>
+       <img src="imgs/coverage-overview.png"
+            alt="An overview of how much CSS (and JavaScript) is used and unused."/>
+       <figcaption>
+         <b>Figure 10</b>. An overview of how much CSS (and JavaScript) is used and unused
+       </figcaption>
+     </figure>
+
+1. Click a CSS file to see a line-by-line breakdown of what CSS it uses.
+
+     <figure>
+       <img src="imgs/coverage-detail.png"
+            alt="A line-by-line breakdown of used and unused CSS."/>
+       <figcaption>
+         <b>Figure 11</b>. Lines 55 to 57 and 65 to 67 of <code>devsite-google-blue.css</code>
+         are unused, whereas lines 59 to 63 are used
+       </figcaption>
+     </figure>
+
+### Force print preview mode {: #print }
+
+See [Force DevTools Into Print Preview Mode](/web/tools/chrome-devtools/css/print-preview).
 
 ## Change CSS {: #change }
 
@@ -226,7 +281,7 @@ To add an inline declaration:
 <figure>
   <img src="imgs/inline-declaration.png" alt="Adding inline declarations"/>
   <figcaption>
-    <b>Figure 8</b>. The <code>margin-top</code> and
+    <b>Figure 12</b>. The <code>margin-top</code> and
     <code>background-color</code> properties have been applied to the
     selected element. In the <b>DOM Tree</b> you can see the declarations
     reflected in the element's <code>style</code> attribute
@@ -248,7 +303,7 @@ To add a declaration to an existing style rule:
   <img src="imgs/add-declaration-existing-rule.png"
        alt="Adding a declaration to a style rule"/>
   <figcaption>
-    <b>Figure 9</b>. Adding the <code>border-bottom-style:groove</code>
+    <b>Figure 13</b>. Adding the <code>border-bottom-style:groove</code>
     declaration to a style rule
   </figcaption>
 </figure>
@@ -264,7 +319,7 @@ for shortcuts for quickly incrementing or decrementing a value by 0.1,
   <img src="imgs/add-declaration-existing-rule.png"
        alt="Changing the value of a declaration"/>
   <figcaption>
-    <b>Figure 10</b>. Changing the value of the <code>border-bottom-style</code>
+    <b>Figure 14</b>. Changing the value of the <code>border-bottom-style</code>
     declaration
   </figcaption>
 </figure>
@@ -298,7 +353,7 @@ To add a class to an element:
 <figure>
   <img src="imgs/element-classes.svg" alt="The Element Classes pane"/>
   <figcaption>
-    <b>Figure 11</b>. The <b>Element Classes</b> pane
+    <b>Figure 14</b>. The <b>Element Classes</b> pane
   </figcaption>
 </figure>
 
@@ -325,7 +380,7 @@ To add a new style rule:
 <figure>
   <img src="imgs/style-rule.png" alt="Adding a new style rule"/>
   <figcaption>
-    <b>Figure 12</b>. DevTools adds the <code>h1.devsite-page-title</code>
+    <b>Figure 15</b>. DevTools adds the <code>h1.devsite-page-title</code>
     style rule after clicking <b>New Style Rule</b>
   </figcaption>
 </figure>
@@ -339,63 +394,9 @@ add the style rule to.
 <figure>
   <img src="imgs/choose-stylesheet.png" alt="Choosing a stylesheet"/>
   <figcaption>
-    <b>Figure 13</b>. Choosing a stylesheet
+    <b>Figure 16</b>. Choosing a stylesheet
   </figcaption>
 </figure>
-
-#### Add a style rule to a specific location {: #style-rule-location }
-
-To add a style rule to a specific location in the **Styles** tab:
-
-1. Hover over the style rule that is directly above where you want to
-   add your new style rule.
-1. [Reveal the **More Actions** toolbar](#reveal-more-actions).
-1. Click **Insert Style Rule Below** ![Insert Style Rule
-   Below][ISRB]{:.cdt-inl}.
-
-[ISRB]: imgs/new-style-rule.png
-
-<figure>
-  <img src="imgs/insert-style-rule-below.png" alt="Insert Style Rule Below"/>
-  <figcaption>
-    <b>Figure 14</b>. <b>Insert Style Rule Below</b>
-  </figcaption>
-</figure>
-
-### Reveal the More Actions toolbar {: #reveal-more-actions }
-
-The **More Actions** toolbar lets you: 
-
-* Insert a style rule directly below the one you're focused on.
-* Add a `background-color`, `color`, `box-shadow`, or `text-shadow`
-  declaration to the style rule you're focused on.
-
-To reveal the **More Actions** toolbar:
-
-1. In the **Styles** tab, hover over a style rule. **More Actions**
-   ![More](imgs/more.png){:.cdt-inl} is revealed in the bottom-right of the
-   style rule's section.
-
-     <figure>
-       <img src="imgs/reveal-more.png" alt="Revealing \"More\" Actions"/>
-       <figcaption>
-         <b>Figure 15</b>. After hovering over the <code>.devsite-article
-         h1:first-of-type</code> style rule, <b>More Actions</b> is revealed
-         in the bottom-right of the style rule's section
-       </figcaption>
-     </figure>
-
-1. Hover over **More Actions** ![More](imgs/more.png){:.cdt-inl} to reveal
-   the actions mentioned above.
-
-     <figure>
-       <img src="imgs/insert-style-rule-below.png"
-            alt="The \"More Actions \" toolbar"/>
-       <figcaption>
-         <b>Figure 16</b>. The <b>Insert Style Rule Below</b> action is
-         revealed after hovering over <b>More Actions</b>
-       </figcaption>
-     </figure>
 
 ### Toggle a declaration {: #toggle-declaration }
 
@@ -411,80 +412,8 @@ To toggle a single declaration on or off:
 <figure>
   <img src="imgs/toggle-declaration.png" alt="Toggling a declaration"/>
   <figcaption>
-    <b>Figure 17</b>. The <code>color</code> property for the
+    <b>Figure 20</b>. The <code>color</code> property for the
     currently-selected element has been toggled off
-  </figcaption>
-</figure>
-
-### Add a background-color declaration {: #background-color }
-
-To add a `background-color` declaration to an element:
-
-1. Hover over the style rule that you want to add the `background-color`
-   declaration to.
-1. [Reveal the **More Actions** toolbar](#reveal-more-actions).
-1. Click **Add Background Color** ![Add Background Color][ABC]{:.cdt-inl}.
-
-[ABC]: imgs/add-background-color-icon.png
-
-<figure>
-  <img src="imgs/add-background-color.png" alt="Add Background Color"/>
-  <figcaption>
-    <b>Figure 18</b>. <b>Add Background Color</b>
-  </figcaption>
-</figure>
-
-### Add a color declaration {: #color }
-
-To add a `color` declaration to an element:
-
-1. Hover over the style rule that you want to add the `color`
-   declaration to.
-1. [Reveal the **More Actions** toolbar](#reveal-more-actions).
-1. Click **Add Color** ![Add Color][AC]{:.cdt-inl}.
-
-[AC]: imgs/add-color-icon.png
-
-<figure>
-  <img src="imgs/add-color.png" alt="Add Color"/>
-  <figcaption>
-    <b>Figure 19</b>. <b>Add Color</b>
-  </figcaption>
-</figure>
-
-### Add a box-shadow declaration {: #box-shadow }
-
-To add a `box-shadow` declaration to an element:
-
-1. Hover over the style rule that you want to add the `box-shadow`
-   declaration to.
-1. [Reveal the **More Actions** toolbar](#reveal-more-actions).
-1. Click **Add Box Shadow** ![Add Box Shadow][ABS]{:.cdt-inl}.
-
-[ABS]: imgs/add-box-shadow-icon.png
-
-<figure>
-  <img src="imgs/add-box-shadow.png" alt="Add Box Shadow"/>
-  <figcaption>
-    <b>Figure 20</b>. <b>Add Box Shadow</b>
-  </figcaption>
-</figure>
-
-### Add a text-shadow declaration {: #text-shadow }
-
-To add a `text-shadow` declaration to an element:
-
-1. Hover over the style rule that you want to add the `text-shadow`
-   declaration to.
-1. [Reveal the **More Actions** toolbar](#reveal-more-actions).
-1. Click **Add Text Shadow** ![Add Text Shadow][ATS]{:.cdt-inl}.
-
-[ATS]: imgs/add-text-shadow-icon.png
-
-<figure>
-  <img src="imgs/add-text-shadow.png" alt="Add Text Shadow"/>
-  <figcaption>
-    <b>Figure 21</b>. <b>Add Text Shadow</b>
   </figcaption>
 </figure>
 
@@ -503,7 +432,7 @@ To open the **Color Picker**:
      <figure>
        <img src="imgs/color-preview.png" alt="Color preview"/>
        <figcaption>
-         <b>Figure 22</b>. The small blue square to the left of
+         <b>Figure 24</b>. The small blue square to the left of
          <code>rgb(123, 170, 247)</code> is a preview of that color
        </figcaption>
      </figure>
@@ -513,7 +442,7 @@ To open the **Color Picker**:
      <figure>
        <img src="imgs/color-picker.png" alt="The Color Picker"/>
        <figcaption>
-         <b>Figure 23</b>. The <b>Color Picker</b>
+         <b>Figure 25</b>. The <b>Color Picker</b>
        </figcaption>
      </figure>
 
@@ -523,7 +452,7 @@ Here's a description of each of the UI elements of the **Color Picker**:
   <img src="imgs/color-picker-annotated.svg"
        alt="The Color Picker, annotated"/>
   <figcaption>
-    <b>Figure 24</b>. The <b>Color Picker</b>, annotated
+    <b>Figure 26</b>. The <b>Color Picker</b>, annotated
   </figcaption>
 </figure>
 
@@ -559,9 +488,57 @@ change the selected color to some other color on the page:
      <figure>
        <img src="imgs/eyedropper.png" alt="Using the Eyedropper"/>
        <figcaption>
-         <b>Figure 25</b>. The <b>Color Picker</b> shows a current color
+         <b>Figure 27</b>. The <b>Color Picker</b> shows a current color
          value of <code>#212121</code>, which is close to black. This
          color would change to the blue that's currently highlighted in
          the viewport once the blue was clicked
        </figcaption>
      </figure>
+
+### Change angle value with the Angle Clock {: #angle-clock }
+
+The **Angle Clock** provides a GUI for changing `<angle>`s in CSS property values.
+
+To open the **Angle Clock**:
+
+1. [Select an element](#select) with angle declaration. For example, select the text below. 
+    {% framebox width="auto" height="auto" enable_widgets="true" %}
+      <style>
+      p {
+        font-weight: bold;
+        text-align: center;
+        margin-top: 40px;
+        transform: rotate(-5deg);
+        background: linear-gradient(0.25turn, pink, lavender);
+      }
+      </style>
+      <p>Inspect me!</p>
+    {% endframebox %}
+
+1. In the **Styles** tab, find the `transform` or `background` declaration
+   that you want to change. Click on the **Angle Preview** box next to the angle value.
+
+    <figure>
+      <img src="imgs/angle-preview.png" alt="Angle preview"/>
+      <figcaption>
+        <b>Figure 28</b>. The small clock to the left of
+        <code>-5deg</code> and <code>0.25turn</code> are preview of the angle.
+      </figcaption>
+     </figure>
+
+1. Click the preview to open the **Angle Clock**.
+
+    <figure>
+      <img src="imgs/angle-clock.png" alt="Angle clock"/>
+      <figcaption>
+        <b>Figure 29</b>. The Angle Clock.
+       </figcaption>
+    </figure>
+
+1. Change the angle value by clicking on the **Angle Clock** circle or scroll your mouse to increase / decrease the angle value by 1. 
+
+1. There are more keyboard shortcuts to change the angle value. Find out more in the [Styles pane keyboard shortcuts](/web/tools/chrome-devtools/shortcuts#styles).
+
+## Feedback {: #feedback }
+
+{% include "web/_shared/helpful.html" %}

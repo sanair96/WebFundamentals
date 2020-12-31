@@ -1,8 +1,8 @@
-project_path: /web/_project.yaml
-book_path: /web/tools/_book.yaml
+project_path: /web/tools/chrome-devtools/_project.yaml
+book_path: /web/tools/chrome-devtools/_book.yaml
 description: Ikuti terus panduan interaktif ini untuk mempelajari cara menggunakan DevTools guna mendiagnosis layout sinkron paksa.
 
-{# wf_updated_on: 2017-07-12 #}
+{# wf_updated_on: 2020-07-10 #}
 {# wf_published_on: 2015-04-13 #}
 
 # Mendiagnosis Layout Sinkron Paksa {: .page-title }
@@ -102,7 +102,7 @@ Anda sekarang seharusnya melihat definisi fungsi di panel **Sources**.
 ![definisi fungsi dalam panel sources](imgs/definition.png)
 
 Fungsi `update()` adalah penangan callback untuk 
-`requestAnimationCallback()`. Penangan menghitung setiap properti `left` gambar
+`requestAnimationFrame()`. Penangan menghitung setiap properti `left` gambar
 berdasarkan nilai `offsetTop` gambar. Ini memaksa browser melakukan
 layout baru segera untuk memastikan tersedianya nilai yang benar.
 Pemaksaan layout pada setiap bingkai animasi adalah penyebab tersendatnya

@@ -1,11 +1,12 @@
-project_path: /web/_project.yaml
+project_path: /web/fundamentals/_project.yaml
 book_path: /web/fundamentals/_book.yaml
 description: Layout is where the browser figures out the geometric information for elements: their size and location in the page. Each element will have explicit or implicit sizing information based on the CSS that was used, the contents of the element, or a parent element. The process is called Layout in Chrome.
 
 # Avoid Large, Complex Layouts and Layout Thrashing {: .page-title }
 
-{# wf_updated_on: 2015-03-20 #}
+{# wf_updated_on: 2018-08-17 #}
 {# wf_published_on: 2015-03-20 #}
+{# wf_blink_components: Blink>Layout #}
 
 {% include "web/_shared/contributors/paullewis.html" %}
 
@@ -155,3 +156,7 @@ The fix for this sample is to once again _read_ then _write_ values:
 
 
 If you want to guarantee safety you should check out [FastDOM](https://github.com/wilsonpage/fastdom), which automatically batches your reads and writes for you, and should prevent you from triggering forced synchronous layouts or layout thrashing accidentally.
+
+## Feedback {: #feedback }
+
+{% include "web/_shared/helpful.html" %}

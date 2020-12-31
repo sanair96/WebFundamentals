@@ -1,8 +1,8 @@
-project_path: /web/_project.yaml
-book_path: /web/tools/_book.yaml
+project_path: /web/tools/chrome-devtools/_project.yaml
+book_path: /web/tools/chrome-devtools/_book.yaml
 description: Siga este guia interativo para saber como usar o DevTools para diagnosticar layouts síncronos forçados.
 
-{# wf_updated_on: 2016-03-31 #}
+{# wf_updated_on: 2020-07-10 #}
 {# wf_published_on: 2015-04-13 #}
 
 # Diagnosticar layouts síncronos forçados {: .page-title }
@@ -102,7 +102,7 @@ A definição da função deve estar exibida no painel **Sources**.
 ![definição da função no painel sources](imgs/definition.png)
 
 A função `update()` é o gerenciador de retorno de chamada de 
-`requestAnimationCallback()`. O gerenciador computa cada propriedade `left` da imagem
+`requestAnimationFrame()`. O gerenciador computa cada propriedade `left` da imagem
 com base no valor `offsetTop` da imagem. Isso força o navegador a executar
 um novo layout imediatamente para garantir que ele forneça o valor correto.
 Forçar um layout em todo quadro da animação é a causa das animações

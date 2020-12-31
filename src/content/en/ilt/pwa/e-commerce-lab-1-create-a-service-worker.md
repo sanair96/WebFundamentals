@@ -2,11 +2,13 @@ project_path: /web/_project.yaml
 book_path: /web/ilt/pwa/_book.yaml
 
 {# wf_auto_generated #}
-{# wf_updated_on: 2017-06-14T20:26:34Z #}
+{# wf_blink_components: N/A #}
+{# wf_updated_on: 2019-04-26 #}
 {# wf_published_on: 2016-01-01 #}
 
 
 # E-Commerce Lab 1: Create a Service Worker {: .page-title }
+{% include "web/ilt/pwa/_shared/update.html" %}
 
 
 
@@ -49,7 +51,7 @@ book_path: /web/ilt/pwa/_book.yaml
 
 
 
-Clone the E-Commerce lab repository with Git using the following command: 
+Clone the E-Commerce lab repository with Git using the following command:
 
     git clone https://github.com/google-developer-training/pwa-ecommerce-demo.git
 
@@ -73,7 +75,7 @@ Then run the following:
 
     npm run serve
 
-This runs the default task in __gulpfile.babel.js__ which copies the project files to the appropriate folder and starts a server. Open your browser and navigate to `localhost:8080`. The app is a mock furniture website, "Modern Furniture Store". Several furniture items should display on the front page. 
+This runs the default task in __gulpfile.babel.js__ which copies the project files to the appropriate folder and starts a server. Open your browser and navigate to `localhost:8080`. The app is a mock furniture website, "Modern Furniture Store". Several furniture items should display on the front page.
 
 When the app opens, confirm that a service worker is not registered at local host by  [checking developer tools](tools-for-pwa-developers#accesssw). If there is a service worker at localhost,  [unregister it](tools-for-pwa-developers#unregister) so it doesn't interfere with the lab.
 
@@ -161,13 +163,13 @@ Note: Solution code can be found in the __lab2-add-to-homescreen__ folder.
 
 
 
-To complete TODO SW-5 in __app/service-worker.js__, write the code to delete unused caches in the  [`activate` event handler](/web/fundamentals/instant-and-offline/offline-cookbook/#on-activate). You should create a "whitelist" of caches currently in use that should not be deleted (such as the `e-commerce-v1` cache). Use `caches.keys()` to get a list of the cache names. Then, inside `Promise.all`, map the array containing the cache names to a function that deletes each cache not in the whitelist. Save the file when you have completed this step.
+To complete TODO SW-5 in __app/service-worker.js__, write the code to delete unused caches in the  [`activate` event handler](/web/fundamentals/instant-and-offline/offline-cookbook/#on-activate). You should create an "allowlist" of caches currently in use that should not be deleted (such as the `e-commerce-v1` cache). Use `caches.keys()` to get a list of the cache names. Then, inside `Promise.all`, map the array containing the cache names to a function that deletes each cache not in the allowlist. Save the file when you have completed this step.
 
 
 
 Note: If you get stuck, you can use  [Lab: Caching files with Service Worker](lab-caching-files-with-service-worker) for clues.
 
- 
+
 
 <div id="6"></div>
 
@@ -194,5 +196,3 @@ Open the browser and navigate to localhost:8080.  [Inspect the cache](tools-for-
 
 
 You have added a service worker to the E-Commerce App. In the sw-precache and sw-toolbox lab, we will generate a service worker in our build process to accomplish the same result with less code.
-
-

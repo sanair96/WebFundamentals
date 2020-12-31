@@ -1,8 +1,8 @@
-project_path: /web/_project.yaml
-book_path: /web/tools/_book.yaml
+project_path: /web/tools/chrome-devtools/_project.yaml
+book_path: /web/tools/chrome-devtools/_book.yaml
 description: Application 패널을 사용하여 웹 앱 매니페스트, 서비스 워커 및 서비스 워커 캐시를 검사, 수정 및 디버그합니다.
 
-{# wf_updated_on: 2016-07-25 #}
+{# wf_updated_on: 2020-07-10 #}
 {# wf_published_on: 2016-07-25 #}
 
 # Progressive Web App 디버그 {: .page-title }
@@ -12,7 +12,7 @@ description: Application 패널을 사용하여 웹 앱 매니페스트, 서비�
 <strong>Application</strong> 패널을 사용하여 웹 앱 매니페스트, 서비스 워커 및 서비스 워커 캐시를 검사, 수정
 및 디버그합니다.
 
-관련 가이드: 
+관련 가이드:
 
 * [Progressive Web App](/web/progressive-web-apps)
 
@@ -39,9 +39,9 @@ description: Application 패널을 사용하여 웹 앱 매니페스트, 서비�
 관련 가이드:
 
 * [웹 앱 매니페스트로 사용자
-  환경 개선](/web/fundamentals/engage-and-retain/web-app-manifest)
+  환경 개선](/web/fundamentals/web-app-manifest)
 * [앱 설치 배너
-  사용](/web/fundamentals/engage-and-retain/app-install-banners)
+  사용](/web/fundamentals/app-install-banners)
 
 매니페스트를 설정하면 **Application** 패널의
 **Manifest** 창을 사용하여 매니페스트를 검사할 수 있습니다.
@@ -85,8 +85,7 @@ app](https://events.google.com/io2016/){: .external }을
 가능합니다.
 
 진정한 모바일 경험을 테스트하려면
-실제 휴대기기를 [원격 디버깅][remote
-debugging]을 통해 DevTools에 연결한 다음 DevTools의 **Add to Homescreen** 버튼을
+실제 휴대기기를 [원격 디버깅][remote debugging]을 통해 DevTools에 연결한 다음 DevTools의 **Add to Homescreen** 버튼을
 클릭하여 연결된 휴대기기에서 'add to homescreen' 프롬프트를 트리거할 수 있습니다.
 
 [shelf]: images/io.png
@@ -103,7 +102,7 @@ debugging]을 통해 DevTools에 연결한 다음 DevTools의 **Add to Homescree
 
 * [서비스 워커 소개](/web/fundamentals/primers/service-worker)
 * [푸시 알림: 시기 적절, 관련성,
-  섬세함](/web/fundamentals/engage-and-retain/push-notifications)
+  섬세함](/web/fundamentals/push-notifications)
 
 **Application** 패널의 **Service Workers** 창은 DevTools에서 서비스 워커를 검사하고 디버그하기 위한
 기본 장소입니다.
@@ -155,7 +154,7 @@ debugging]을 통해 DevTools에 연결한 다음 DevTools의 **Add to Homescree
 
 [sw]: images/sw.png
 [cm]: /web/tools/chrome-devtools/settings#command-menu
-[tickle]: /web/fundamentals/engage-and-retain/push-notifications/sending-messages#ways-to-send
+[tickle]: /web/fundamentals/push-notifications/how-push-works
 [errors]: images/sw-error.png
 
 ## 서비스 워커 캐시 {:#caches}

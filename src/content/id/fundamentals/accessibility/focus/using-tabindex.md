@@ -3,7 +3,7 @@ book_path: /web/fundamentals/_book.yaml
 description: Memodifikasi urutan DOM dengan tabindex
 
 
-{# wf_updated_on: 2016-10-04 #}
+{# wf_updated_on: 2019-06-08 #}
 {# wf_published_on: 2016-10-04 #}
 
 # Menggunakan tabindex {: .page-title }
@@ -120,7 +120,7 @@ keyboard tetap bisa berinteraksi dengan kontrol Anda.
 
 Boleh jadi sulit mengetahui perilaku keyboard mana yang akan diimplementasikan, namun ada
 dokumen berguna yang bisa Anda rujuk. Panduan
-[Accessible Rich Internet Applications (ARIA) Authoring Practices](https://www.w3.org/TR/wai-aria-practices/){: .external } 
+[Accessible Rich Internet Applications (ARIA) Authoring Practices](https://www.w3.org/TR/wai-aria-practices/){: .external }
 mencantumkan daftar tipe komponen dan macam tindakan keyboard yang didukungnya.
 Kita akan membahas ARIA secara lebih detail nanti, namun untuk saat ini mari kita gunakan panduan tersebut untuk membantu
 menambahkan dukungan keyboard ke sebuah komponen baru.
@@ -232,7 +232,7 @@ DevTools untuk mengamati pergerakan tabindex dari satu tombol radio ke tombol be
   </radio-group>
 </div>
 
-<script src="https://cdn.rawgit.com/webcomponents/custom-elements/master/custom-elements.min.js"></script>
+<script src="https://www.gstatic.com/devrel-devsite/v9dcc115658e2b070ea1ae9baed63d566/developers/js/custom-elements.min.js"></script>
 
 <script>
   class RadioButton extends HTMLElement {
@@ -356,7 +356,7 @@ dan tidak bisa keluar lagi. Perhatikan sebuah widget pelengkapan otomatis yang m
 perilaku tab, namun mencegah pengguna meninggalkannya bila belum selesai.
 Ini disebut *jebakan keyboard*, dan hal ini bisa sangat mengesalkan pengguna.
 Bagian 2.1.2 pada daftar periksa Web AIM menangani masalah ini, yang menyatakan bahwa
-[fokus keyboard tidak boleh dikunci atau terjebak pada satu elemen laman tertentu](http://webaim.org/standards/wcag/checklist#sc2.1.2){: .external }.
+[fokus keyboard tidak boleh dikunci atau terjebak pada satu elemen laman tertentu](https://webaim.org/standards/wcag/checklist#sc2.1.2){: .external }.
 Pengguna harus bisa mengarah ke dan dari semua elemen laman hanya dengan menggunakan
 keyboard.
 

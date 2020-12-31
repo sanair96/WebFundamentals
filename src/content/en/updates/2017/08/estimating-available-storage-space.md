@@ -2,7 +2,7 @@ project_path: /web/_project.yaml
 book_path: /web/updates/_book.yaml
 description: navigator.storage.estimate() gives you insight into your web app's storage constraints.
 
-{# wf_updated_on: 2017-08-02 #}
+{# wf_updated_on: 2019-10-17 #}
 {# wf_published_on: 2017-08-02 #}
 {# wf_tags: storage,serviceworker,indexeddb,chrome61 #}
 {# wf_blink_components: Blink>Storage>Quota #}
@@ -53,24 +53,24 @@ between revisions and undo their work. Or if you're developing an offline media
 playback experience, saving audio or video files locally would be a critical
 feature. Every web app that can be personalized ends up needing to save some
 sort of [state
-information](/web/fundamentals/instant-and-offline/web-storage/indexeddb-best-practices-app-state).
+information](/web/fundamentals/instant-and-offline/web-storage/indexeddb-best-practices).
 How do you know how much space is available for this type of runtime storage,
 and what happens when you run out of room?
 
-## The past: window.webkitStorageInfo and navigator.webkitTemporaryStorage {: #the-past }
+## The past: `window.webkitStorageInfo` and `navigator.webkitTemporaryStorage` {: #the-past }
 
 Browsers have historically supported this type of introspection via prefixed
-interfaces, like the very old (and deprecated) 
+interfaces, like the very old (and deprecated)
 <code>[window.webkitStorageInfo](https://github.com/Modernizr/Modernizr/issues/866)</code>,
 and the not-quite-as-old, but still non-standard
 [`navigator.webkitTemporaryStorage`](https://developer.chrome.com/apps/offline_storage#query).
-While these interfaces provided useful information, they don't have have a
+While these interfaces provided useful information, they don't have a
 future as web standards.
 
 That's where the [WHATWG Storage Standard](https://github.com/whatwg/storage)
 enters the picture.
 
-## The future: navigator.storage {: #the-future }
+## The future: `navigator.storage` {: #the-future }
 
 As part of the ongoing work on the [Storage Living
 Standard](https://storage.spec.whatwg.org/), a couple of useful APIs have made
@@ -122,7 +122,7 @@ async function storeDataAndUpdateUI(dataUrl) {
   // See https://googlechrome.github.io/samples/service-worker/window-caches/
   const cache = await caches.open('data-cache');
   await cache.add(dataUrl);
-  
+
   if ('storage' in navigator && 'estimate' in navigator.storage) {
     const {usage, quota} = await navigator.storage.estimate();
     const percentUsed = Math.round(usage / quota * 100);
@@ -197,4 +197,3 @@ function storageEstimateWrapper() {
 }
 ```
 
-{% include "comment-widget.html" %}

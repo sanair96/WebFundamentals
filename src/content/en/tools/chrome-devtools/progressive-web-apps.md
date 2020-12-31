@@ -1,9 +1,10 @@
-project_path: /web/_project.yaml
-book_path: /web/tools/_book.yaml
+project_path: /web/tools/chrome-devtools/_project.yaml
+book_path: /web/tools/chrome-devtools/_book.yaml
 description: Use the Application panel to inspect, modify, and debug web app manifests, service workers, and service worker caches.
 
-{# wf_updated_on: 2016-07-25 #}
+{# wf_updated_on: 2020-07-10 #}
 {# wf_published_on: 2016-07-25 #}
+{# wf_blink_components: Platform>DevTools #}
 
 # Debug Progressive Web Apps {: .page-title }
 
@@ -23,10 +24,10 @@ guides](#other).
 
 
 ### TL;DR {: .hide-from-toc }
-- Use the <strong>App Manifest</strong> pane to inspect your web app manifest and trigger Add to Homescreen events.
-- Use the <strong>Service Worker</strong> pane for a whole range of service-worker-related tasks, like unregistering or updating a service, emulating push events, going offline, or stopping a service worker.
+- Use the <strong>Manifest</strong> pane to inspect your web app manifest and trigger Add to Homescreen events.
+- Use the <strong>Service Workers</strong> pane for a whole range of service-worker-related tasks, like unregistering or updating a service, emulating push events, going offline, or stopping a service worker.
 - View your service worker cache from the <strong>Cache Storage</strong> pane.
-- Unregister a service worker and clear all storage and caches with a single button click from the <strong>Clear Storage</strong> pane.
+- Unregister a service worker and clear all storage and caches with a single button click from the <strong>Clear storage</strong> pane.
 
 
 ## Web app manifest {:#manifest}
@@ -39,9 +40,9 @@ the app looks like on launch.
 Related Guides:
 
 * [Improve user experiences with a Web App
-  Manifest](/web/fundamentals/engage-and-retain/web-app-manifest)
+  Manifest](/web/fundamentals/web-app-manifest)
 * [Using App Install
-  Banners](/web/fundamentals/engage-and-retain/app-install-banners)
+  Banners](/web/fundamentals/app-install-banners)
 
 Once you've got your manifest set up, you can use the **Manifest** pane of the
 **Application** panel to inspect it.
@@ -103,7 +104,7 @@ Related Guides:
 
 * [Intro to Service Workers](/web/fundamentals/primers/service-worker)
 * [Push Notifications: Timely, Relevant, and
-  Precise](/web/fundamentals/engage-and-retain/push-notifications)
+  Precise](/web/fundamentals/push-notifications)
 
 The **Service Workers** pane in the **Application** panel is the main place in
 DevTools to inspect and debug service workers.
@@ -155,7 +156,7 @@ up.
 
 [sw]: images/sw.png
 [cm]: /web/tools/chrome-devtools/ui#command-menu
-[tickle]: /web/fundamentals/engage-and-retain/push-notifications/sending-messages#ways-to-send
+[tickle]: /web/fundamentals/push-notifications/how-push-works
 [errors]: images/sw-error.png
 
 ## Service worker caches {:#caches}
@@ -176,6 +177,32 @@ If you've got two or more caches open, you'll see them listed below the
 [sw-cache]: https://developer.mozilla.org/en-US/docs/Web/API/Cache
 [sw-cache-pane]: images/sw-cache.png
 [multiple-caches]: images/multiple-caches.png
+
+## Quota usage {:#opaque-responses}
+
+Some responses within the Cache Storage pane may be flagged as being
+"[opaque](/web/fundamentals/glossary#opaque-response)". This refers to a response retrieved from a
+different origin, like from a [CDN](/web/fundamentals/glossary#CDN) or remote API, when
+[CORS](https://fetch.spec.whatwg.org/#http-cors-protocol) is not enabled.
+
+In order to avoid leakage of cross-domain information, there's significant padding added to the size
+of an opaque response used for calculating storage quota limits (i.e. whether a `QuotaExceeded`
+exception is thrown) and reported by the [`navigator.storage`
+API](/web/updates/2017/08/estimating-available-storage-space).
+
+The details of this padding vary from browser to browser, but for Google Chrome, this means that the
+*minimum* size that any single cached opaque response contributes to the overall storage usage is
+[approximately 7 megabytes](https://bugs.chromium.org/p/chromium/issues/detail?id=796060#c17). You
+should keep this in mind when determining how many opaque responses you want to cache, since you
+could easily exceeded storage quota limitations much sooner than you'd otherwise expect based on the
+actual size of the opaque resources.
+
+Related Guides:
+
+* [Stack Overflow: What limitations apply to opaque
+  responses?](https://stackoverflow.com/q/39109789/385997)
+* [Workbox: Understanding Storage
+  Quota](/web/tools/workbox/guides/storage-quota#beware_of_opaque_responses)
 
 ## Clear storage {:#clear-storage}
 
@@ -199,3 +226,7 @@ Related Guides:
 * [Inspect page resources](/web/tools/chrome-devtools/iterate/manage-data/page-resources)
 * [Inspect and manage local storage and
   caches](/web/tools/chrome-devtools/iterate/manage-data/local-storage)
+
+## Feedback {: #feedback }
+
+{% include "web/_shared/helpful.html" %}

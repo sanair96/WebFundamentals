@@ -1,8 +1,8 @@
-project_path: /web/_project.yaml
-book_path: /web/tools/_book.yaml
+project_path: /web/tools/chrome-devtools/_project.yaml
+book_path: /web/tools/chrome-devtools/_book.yaml
 description: Usa el panel Application para inspeccionar, modificar y depurar manifiestos de apps web, service worker y cachés de service worker.
 
-{# wf_updated_on: 2016-07-25 #}
+{# wf_updated_on: 2020-07-10 #}
 {# wf_published_on: 2016-07-25 #}
 
 # Depurar Progressive Web App {: .page-title }
@@ -12,7 +12,7 @@ description: Usa el panel Application para inspeccionar, modificar y depurar man
 Usa el panel <strong>Application</strong> para inspeccionar, modificar
 y depurar manifiestos de apps web, service worker y cachés de procesos de trabajo.
 
-Guías relacionadas: 
+Guías relacionadas:
 
 * [Progressive Web App](/web/progressive-web-apps)
 
@@ -39,9 +39,9 @@ aspecto de la app durante el inicio.
 Guías relacionadas:
 
 * [Mejora la experiencia del usuario con el manifiesto de apps
-  web](/web/fundamentals/engage-and-retain/web-app-manifest)
+  web](/web/fundamentals/web-app-manifest)
 * [Uso de banners de instalación
-  de app](/web/fundamentals/engage-and-retain/app-install-banners)
+  de app](/web/fundamentals/app-install-banners)
 
 Cuando hayas configurado el manifiesto, podrás usar el subpanel **Manifest** del panel
 **Application** para inspeccionarlo.
@@ -85,9 +85,9 @@ correctamente tu app a tu biblioteca de escritorio, también funcionará en disp
 móviles.
 
 Si deseas probar la experiencia real en dispositivos móviles, puedes
-conectar un dispositivo móvil real a DevTools a través de [la depuración remota][remote
-debugging] y hacer clic en el botón **Add to Homescreen** (en DevTools)
-para que aparezca la solicitud “Add to Homescreen” en el dispositivo móvil conectado.
+conectar un dispositivo móvil real a DevTools a través de [la depuración remota][remote debugging]
+y hacer clic en el botón **Add to Homescreen** (en DevTools) para que aparezca
+la solicitud “Add to Homescreen” en el dispositivo móvil conectado.
 
 [shelf]: images/io.png
 [remote debugging]: /web/tools/chrome-devtools/debug/remote-debugging/remote-debugging
@@ -103,7 +103,7 @@ Guías relacionadas:
 
 * [Introducción a Service Workers](/web/fundamentals/primers/service-worker)
 * [Notificaciones push: oportunas, relevantes y
-  precisas](/web/fundamentals/engage-and-retain/push-notifications)
+  precisas](/web/fundamentals/push-notifications)
 
 El subpanel **Service Workers** del panel **Application** es el punto central de
 DevTools donde se inspeccionan y depuran los service worker.
@@ -155,7 +155,7 @@ Si el service worker causa algún error, aparece una etiqueta llamada **Errors**
 
 [sw]: images/sw.png
 [cm]: /web/tools/chrome-devtools/settings#command-menu
-[tickle]: /web/fundamentals/engage-and-retain/push-notifications/sending-messages#ways-to-send
+[tickle]: /web/fundamentals/push-notifications/how-push-works
 [errors]: images/sw-error.png
 
 ## Cachés de service worker {:#caches}

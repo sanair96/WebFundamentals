@@ -3,7 +3,7 @@ book_path: /web/fundamentals/_book.yaml
 description: Modificando a ordem do DOM com tabindex
 
 
-{# wf_updated_on: 2016-10-04 #}
+{# wf_updated_on: 2019-06-08 #}
 {# wf_published_on: 2016-10-04 #}
 
 # Uso do tabindex {: .page-title }
@@ -120,7 +120,7 @@ que se baseiam principalmente em teclado ainda possam interagir com o seu contro
 
 Saber quais comportamentos do teclado implementar pode ser difícil, mas há
 um documento útil que você pode consultar. O guia das
-[Práticas de autoria dos Aplicativos Ricos Acessíveis de Internet (ARIA)](https://www.w3.org/TR/wai-aria-practices/){: .external } 
+[Práticas de autoria dos Aplicativos Ricos Acessíveis de Internet (ARIA)](https://www.w3.org/TR/wai-aria-practices/){: .external }
 lista os tipos de componentes e que tipos de ações do teclado que eles suportam.
 Abordaremos ARIA em maiores detalhes mais tarde, mas por agora usaremos o guia
 para nos ajudar a adicionar suporte de teclado a um novo componente.
@@ -139,7 +139,7 @@ aparência e comportamento.
     </radio-group>
 
 Para determinar que tipo de suporte de teclado eles requerem, você verificaria o
-[Guia de Práticas de autoria do ARIA](https://www.w3.org/TR/wai-aria-practices/){: .external }. 
+[Guia de Práticas de autoria do ARIA](https://www.w3.org/TR/wai-aria-practices/){: .external }.
 A seção 2 contém uma lista de padrões de design, e nessa lista há
 uma [tabela de características para grupos de rádio](https://www.w3.org/TR/wai-aria-practices/#radiobutton){: .external },
 o componente existente que mais se aproxima do seu novo elemento.
@@ -176,7 +176,7 @@ e chama o método de foco para ele.
     </radio-group>
 
 Quando o usuário alcança o último (ou primeiro, dependendo da direção em que
-o foco está sendo deslocado) filho, você fará uma volta e focará no primeiro 
+o foco está sendo deslocado) filho, você fará uma volta e focará no primeiro
 (ou último) filho novamente.
 
 Você pode experimentar o exemplo concluído abaixo. Inspecione o elemento no
@@ -232,7 +232,7 @@ DevTools para observar o tabindex se deslocar de um rádio para o próximo.
   </radio-group>
 </div>
 
-<script src="https://cdn.rawgit.com/webcomponents/custom-elements/master/custom-elements.min.js"></script>
+<script src="https://www.gstatic.com/devrel-devsite/v9dcc115658e2b070ea1ae9baed63d566/developers/js/custom-elements.min.js"></script>
 
 <script>
   class RadioButton extends HTMLElement {
@@ -356,7 +356,7 @@ qual não consegue sair. Considere um widget de preenchimento automático que te
 o comportamento de tabulação, mas impede o usuário de sair até que seja
 concluído. Isso é chamado de *armadilha de teclado*, e pode ser muito
 frustrante para o usuário. A seção 2.1.2 da lista de verificação do Web AIM
-aborda esta questão, afirmando que [o foco do teclado nunca deve ser bloqueado ou preso em um elemento de página específico](http://webaim.org/standards/wcag/checklist#sc2.1.2){: .external }.
+aborda esta questão, afirmando que [o foco do teclado nunca deve ser bloqueado ou preso em um elemento de página específico](https://webaim.org/standards/wcag/checklist#sc2.1.2){: .external }.
 O usuário deve ser capaz de navegar para e de todos os elementos da página
 usando apenas o teclado.
 

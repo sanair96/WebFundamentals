@@ -1,10 +1,13 @@
 project_path: /web/_project.yaml
 book_path: /web/ilt/pwa/_book.yaml
 
-{# wf_updated_on: 2017-04-14 #}
+{# wf_blink_components: N/A #}
+{# wf_updated_on: 2019-04-26 #}
 {# wf_published_on: 2017-04-14 #}
+{# wf_blink_components: N/A #}
 
 # Progressive Web Apps Training {: .page-title }
+{% include "web/ilt/pwa/_shared/update.html" %}
 
 <div class="video-wrapper ilt-video-wrapper">
   <iframe class="devsite-embedded-youtube-video" data-video-id="17kGWJOuL-A"
@@ -33,7 +36,7 @@ experiences. It shows how to use service workers, APIs, and an application
 shell architecture for meaningful offline experiences, fast first load, and
 easy user reengagement upon repeat visits.
 
-## Course Materials
+## Course materials
 
 ### Codelabs
 
@@ -50,7 +53,11 @@ Each codelab has an accompanying text that explains the concepts in the
 codelab in more detail. Links to corresponding texts are included at the
 top of each codelab.
 
-### Other Resources
+### Other resources
 
 Find more codelabs on
 [codelabs.developers.google.com](https://codelabs.developers.google.com)
+
+## Feedback {: #feedback .hide-from-toc }
+
+{% include "web/_shared/helpful.html" %}

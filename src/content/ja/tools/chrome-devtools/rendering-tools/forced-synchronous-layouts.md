@@ -1,8 +1,8 @@
-project_path: /web/_project.yaml
-book_path: /web/tools/_book.yaml
+project_path: /web/tools/chrome-devtools/_project.yaml
+book_path: /web/tools/chrome-devtools/_book.yaml
 description:このインタラクティブなガイドに従って、レイアウトの強制同期の診断に DevTools を使う方法を習得します。
 
-{# wf_updated_on: 2016-03-31 #}
+{# wf_updated_on: 2020-07-10 #}
 {# wf_published_on: 2015-04-13 #}
 
 # レイアウトの強制同期の診断 {: .page-title }
@@ -96,7 +96,7 @@ Timeline 記録の [**Summary**] ペインを見ると、ブラウザは大半�
 
 ![[Sources] パネルの関数定義](imgs/definition.png)
 
-`update()` 関数は `requestAnimationCallback()` のコールバック ハンドラです。
+`update()` 関数は `requestAnimationFrame()` のコールバック ハンドラです。
 ハンドラは、イメージの `offsetTop` 値に基づいて各イメージの `left` プロパティを計算します。
 この計算により、ブラウザは新しいレイアウトの即時実行を強制され、正確な値になるようにします。
 アニメーションのフレームで毎回レイアウトの適用が強制されると、ページのアニメーションが不自然になる原因になります。

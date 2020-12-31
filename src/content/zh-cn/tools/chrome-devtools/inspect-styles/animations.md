@@ -1,8 +1,8 @@
-project_path: /web/_project.yaml
-book_path: /web/tools/_book.yaml
+project_path: /web/tools/chrome-devtools/_project.yaml
+book_path: /web/tools/chrome-devtools/_book.yaml
 description:使用 Chrome DevTools 动画检查器检查和修改动画。
 
-{# wf_updated_on: 2016-05-02 #}
+{# wf_updated_on: 2020-12-14 #}
 {# wf_published_on: 2016-05-02 #}
 
 # 检查动画 {: .page-title }
@@ -72,7 +72,7 @@ Chrome DevTools 动画检查器有两个主要用途。
 
  
 
-<video src="animations/capture-animations.mp4"
+<video src="animations-img/capture-animations.mp4"
        autoplay loop muted controls></video>
 
 ## 检查动画 {:#inspect}

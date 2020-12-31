@@ -2,11 +2,12 @@ project_path: /web/_project.yaml
 book_path: /web/updates/_book.yaml
 description: Navigation preload lets you overcome service worker startup time by making requests in parallel.
 
-{# wf_updated_on: 2017-06-07 #}
+{# wf_updated_on: 2018-09-07 #}
 {# wf_published_on: 2017-02-15 #}
-{# wf_tags: chrome57,serviceworker,performance #}
+{# wf_tags: chrome59,serviceworker,performance #}
 {# wf_featured_image: /web/updates/images/generic/devices.png #}
 {# wf_featured_snippet: Navigation preload lets you overcome service worker startup time by making requests in parallel. #}
+{# wf_blink_components: Blink>ServiceWorker #}
 
 # Speed up Service Worker with Navigation Preloads {: .page-title }
 
@@ -14,17 +15,11 @@ description: Navigation preload lets you overcome service worker startup time by
 
 ### TL;DR {: .hide-from-toc }
 
-* In some situations, [service worker boot-up time can delay a network
-  response](#the-problem).
-* A new experimental feature, [navigation preload](#the-solution), fixes this by
-  allowing you to make the request in parallel with service worker boot-up.
-* You can distinguish preload requests from regular navigations using a header,
-  and [serve different content](#header).
-* Navigation preload is in Chrome 57 Canary behind a flag, and the API may
-  change in response to developer feedback.
-* It'll remain behind a flag in Chrome 57 stable (likely to be released in
-  March), but you can [apply for an origin trial](#origin-trial) to test it with
-  real users.
+* In some situations, [service worker boot-up time can delay a network response](#the-problem).
+* A new feature, [navigation preload](#the-solution), released in Chrome 59, fixes this by allowing
+  you to make the request in parallel with service worker boot-up.
+* You can distinguish preload requests from regular navigations using a header, and [serve different
+  content](#header).
 
 ## The problem {: #the-problem }
 
@@ -83,7 +78,7 @@ service workers that don't have a fetch
 event](https://bugs.chromium.org/p/chromium/issues/detail?id=605844), by
 [launching service workers
 speculatively](https://codereview.chromium.org/2045153003), and other
-optimisations. However, bootup time will always be greater than zero.
+optimizations. However, bootup time will always be greater than zero.
 
 Facebook brought the impact of this problem to our attention, and asked for a
 way to perform navigation requests in parallel:
@@ -143,11 +138,9 @@ Here's a video of it in action, where the service worker is given a deliberate
 
 [Here's the demo
 itself](https://jakearchibald.github.io/isserviceworkerready/demos/nav-preload/).
-To get the benefits of navigation preload, you'll need [Chrome 58
-Canary](https://www.google.com/chrome/browser/canary.html) with
-`chrome://flags/#enable-service-worker-navigation-preload` enabled. It also
-works in Chrome 57, but you need to launch Chrome from the command line with
-`--enable-features=ServiceWorkerNavigationPreload`.
+To get the benefits of navigation preload, you'll need [Chrome 59
+or later](https://www.google.com/chrome/browser/canary.html) with
+`chrome://flags/#enable-service-worker-navigation-preload` enabled.
 
 ## Activating navigation preload
 
@@ -183,7 +176,7 @@ addEventListener('fetch', event => {
     <strong>// Else, use the preloaded response, if it's there
     const response = await event.preloadResponse;
     if (response) return response;</strong>
-    
+
     // Else try the network.
     return fetch(event.request);
   }());
@@ -281,8 +274,8 @@ const parts = [
 </pre>
 
 Note: `Promise.resolve(event.preloadResponse)` means we get a promise for
-undefined if `event.preloadResponse` is undefined. It's a good way to normalise
-behaviour with browsers that don't support `event.preloadResponse`.
+undefined if `event.preloadResponse` is undefined. It's a good way to normalize
+behavior with browsers that don't support `event.preloadResponse`.
 
 ## Changing the header
 
@@ -309,32 +302,8 @@ You can look up the state of navigation preload using `getState`:
       console.log(state.headerValue); // string
     });
 
-## Use it on live sites today! {: #origin-trial }
-
-We're still experimenting with this feature, but we're looking for real-world
-feedback. To get feedback, we're making it available as an [origin
-trial](https://github.com/jpchase/OriginTrials/blob/gh-pages/developer-guide.md)
-starting in Chrome 57. Origin trials allow you to temporarily enable the feature
-for users of your website, so you can test its real-world impact. To do this,
-you'll need to [request a token for your
-origin](https://github.com/jpchase/OriginTrials/blob/gh-pages/developer-guide.md#how-do-i-enable-an-experimental-feature-on-my-origin),
-and include the token as a header on your pages and service worker:
-
-    Origin-Trial: token_obtained_from_signup
-
-To avoid the problems we saw with vendor prefixes, origin trials are globally
-shut off if usage exceeds 0.03% of all Chrome page loads, so large sites should
-only enable the feature for a fraction of its users.
-
-If you do experiment with this feature, you can send us feedback on our [mailing
-list](https://groups.google.com/a/chromium.org/forum/#!forum/service-worker-discuss),
-or join the [spec discussion](https://github.com/w3c/ServiceWorker/issues/920).
-If you find any bugs, please [file an issue](https://crbug.com/new), including
-the words "service worker navigation preload" in the issue Summary.
-
 <small>Many thanks to Matt Falkenhagen and Tsuyoshi Horo for their work on this
 feature, and help with this article. And a huge thanks to everyone involved in
-[the standardisation
+[the standardization
 effort](https://github.com/w3c/ServiceWorker/issues/920)</small>
 
-{% include "comment-widget.html" %}

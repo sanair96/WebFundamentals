@@ -2,14 +2,15 @@ project_path: /web/_project.yaml
 book_path: /web/resources/_book.yaml
 description: This is the page description placed in the head.
 
-{# wf_updated_on: 2017-07-12 #}
+{# wf_updated_on: 2019-03-04 #}
 {# wf_published_on: 2016-09-13 #}
+{# wf_blink_components: N/A #}
 
 # Writing an Update or Case Study {: .page-title }
 
 {% include "web/_shared/contributors/petelepage.html" %}
 
-Updates and Case Studies use the same [styles and markdown](style-guide) as
+Updates and Case Studies use the same [styles and markdown](markdown-syntax) as
 [articles](writing-an-article), but have a few extra attributes that you can
 use to change how they're shown in different places across the site. You'll
 also need to [build the related](#build-related) files, like the listing
@@ -31,9 +32,13 @@ To get started quickly, copy the template and start there.
 1. Before submitting the pull request, run `gulp test` to verify everything is happy
 1. Submit your PR with the appropriate changes.
 
+Note: See
+[YAML Front Matter and Attribute Reference](/web/resources/yaml-and-attr-reference)
+for all of the YAML Front Matter and other attributes you can or should use.
+
 ## YAML Front Matter & Special Attributes
 
-Refer to the [YAML Front Matter](style-guide#yaml-front-matter) section for
+Refer to the [YAML Front Matter](writing-an-article#yaml_front_matter) section for
 full details on the required YAML front matter.
 
 Note: You cannot include HTML in the description attribute. If you'd like to
@@ -64,7 +69,7 @@ be an absolute page on DevSite.
 &#123;# wf_featured_image: /web/updates/images/weird.jpg #}
 </pre>
 
-Images should be 2x1, ideally 1000px by 500px.
+Images should be 16x9, ideally 800px by 450px.
 
 **Looking for a generic image?** Check out the [generic images](https://github.com/google/WebFundamentals/tree/master/src/content/en/updates/images/generic) folder.
 
@@ -77,19 +82,6 @@ length, and **can** include HTML.
 <pre class="prettyprint">
 &#123;# wf_featured_snippet: Use &lt;kbd class='kbd'>Cmd + ]&lt;/kbd>... #}
 </pre>
-
-### Comment Blocks
-
-Comment blocks are not automatically added to update pages. To allow users to
-comment on your documentation, you must the comment widget to the bottom of the
-page. For example:
-
-<pre class="prettyprint">
-&#123;% include "comment-widget.html" %}
-</pre>
-
-Note: the comment widget does **not** render in the staging or development
-environment, and will only be visible when the page is published on DevSite.
 
 ## Generating related files {: #build-related }
 

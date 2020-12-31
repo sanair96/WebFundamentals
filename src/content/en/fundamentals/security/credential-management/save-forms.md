@@ -1,8 +1,9 @@
-project_path: /web/_project.yaml
+project_path: /web/fundamentals/_project.yaml
 book_path: /web/fundamentals/_book.yaml
 
-{# wf_updated_on: 2017-07-13 #}
+{# wf_updated_on: 2019-07-25 #}
 {# wf_published_on: 2016-11-08 #}
+{# wf_blink_components: Blink>SecurityFeature>CredentialManagement #}
 
 # Save Credentials from Forms {: .page-title }
 
@@ -25,7 +26,7 @@ so users won't have to sign in again when they return.
 To store user credentials from forms:
 
 1. Include `autocomplete` in the form.
-2. Interrupt the form submission event.
+2. Prevent the form from submitting.
 3. Authenticate by sending a request.
 4. Store the credential.
 5. Update the UI or proceed to the personalized page.
@@ -45,19 +46,19 @@ Learn more about autofill in
 
     <form id="signup" method="post">
      <input name="email" type="text" autocomplete="username email">
-     <input name="display-name" type="text" autocomplete="name"> 
+     <input name="display-name" type="text" autocomplete="name">
      <input name="password" type="password" autocomplete="new-password">
      <input type="submit" value="Sign Up!">
     </form>
 
-## Interrupt the form submission event
+## Prevent the form from submitting
 
-Interrupt the form submission event when the user presses the submit button,
-and prevent the default behavior.
+When the user presses the submit button, prevent the form from submitting, which would otherwise
+result in a page transition:
 
     var f = document.querySelector('#signup');
     f.addEventListener('submit', e => {
-     e.preventDefault();
+      e.preventDefault();
 
 By preventing a page transition,
 you can retain the credential information while verifying its authenticity.
@@ -70,7 +71,7 @@ On the server side, create an endpoint (or simply alter an existing endpoint)
 that responds with HTTP code 200 or 401, so that it’s clear to the browser
 whether the sign-up/sign-in/change password is successful or not.
 
-For example: 
+For example:
 
     // Try sign-in with AJAX
     fetch('/signin', {
@@ -93,7 +94,7 @@ you can simply forward the profile information to the next step.
 
 Synchronous example:
 
-    if (navigator.credentials) {
+    if (window.PasswordCredential) {
        var c = new PasswordCredential(e.target);
        return navigator.credentials.store(c);
      } else {
@@ -102,7 +103,7 @@ Synchronous example:
 
 Asynchronous example:
 
-    if (navigator.credentials) {
+    if (window.PasswordCredential) {
        var c = await navigator.credentials.create({password: e.target});
        return navigator.credentials.store(c);
      } else {
@@ -139,7 +140,7 @@ or proceed to the personalized page.
     });
 
 ## Full code example
-    
+
     // Get form's DOM object
     var f = document.querySelector('#signup');
     f.addEventListener('submit', e => {
@@ -148,7 +149,7 @@ or proceed to the personalized page.
       e.preventDefault();
 
       // Try sign-in with AJAX
-      fetch(/'signin', {
+      fetch('/signin', {
         method: 'POST',
         body: new FormData(e.target),
         credentials: 'include'
@@ -156,12 +157,12 @@ or proceed to the personalized page.
         if (res.status == 200) {
           return Promise.resolve();
         } else {
-          return Promise.reject('Sign in failed');
+          return Promise.reject('Sign-in failed');
         }
       }).then(profile => {
 
         // Instantiate PasswordCredential with the form
-        if (navigator.credentials) {
+        if (window.PasswordCredential) {
           var c = new PasswordCredential(e.target);
           return navigator.credentials.store(c);
         } else {
@@ -169,13 +170,17 @@ or proceed to the personalized page.
         }
       }).then(profile => {
 
-        // Successful sign in
+        // Successful sign-in
         if (profile) {
           updateUI(profile);
         }
       }).catch(error => {
 
-        // Sign in failed
+        // Sign-in failed
         showError('Sign-in Failed');
       });
     });
+
+## Feedback {: #feedback }
+
+{% include "web/_shared/helpful.html" %}

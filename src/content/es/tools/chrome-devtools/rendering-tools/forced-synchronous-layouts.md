@@ -1,8 +1,8 @@
-project_path: /web/_project.yaml
-book_path: /web/tools/_book.yaml
+project_path: /web/tools/chrome-devtools/_project.yaml
+book_path: /web/tools/chrome-devtools/_book.yaml
 description: Sigue esta guía interactiva para aprender a usar DevTools a fin de diagnosticar diseños sincrónicos forzados.
 
-{# wf_updated_on: 2017-07-12 #}
+{# wf_updated_on: 2020-07-10 #}
 {# wf_published_on: 2015-04-13 #}
 
 # Diagnosticar diseños sincrónicos forzados {: .page-title }
@@ -102,7 +102,7 @@ Verás la definición en el panel **Sources**.
 ![Definición de la función en el panel Sources](imgs/definition.png)
 
 La función `update()` es el controlador de callbacks de 
-`requestAnimationCallback()`. El controlador computa la propiedad `left` de cada imagen
+`requestAnimationFrame()`. El controlador computa la propiedad `left` de cada imagen
 según su valor `offsetTop`. Esto fuerza el navegador a realizar
 un diseño nuevo de inmediato para garantizar que proporcione el valor correcto.
 La realización forzosa de diseños en cada fotograma de la animación es la causa del bloqueo de las animaciones

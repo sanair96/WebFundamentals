@@ -1,14 +1,20 @@
-project_path: /web/_project.yaml
-book_path: /web/tools/_book.yaml
+project_path: /web/tools/chrome-devtools/_project.yaml
+book_path: /web/tools/chrome-devtools/_book.yaml
 description: The DOM tree view in the Chrome DevTools Elements panel displays the DOM structure of the current web page. Live-edit the content and structure of your page through DOM updates.
+robots: noindex
 
-{# wf_updated_on: 2015-04-29 #}
+{# wf_updated_on: 2020-12-14 #}
 {# wf_published_on: 2015-04-29 #}
+{# wf_blink_components: Platform>DevTools #}
 
 # Edit the DOM {: .page-title }
 
 {% include "web/_shared/contributors/kaycebasques.html" %}
 {% include "web/_shared/contributors/megginkearney.html" %}
+
+<aside class="caution">
+  This page is deprecated.
+</aside>
 
 The DOM tree view in the Chrome DevTools Elements panel displays the DOM structure of the current web page. Live-edit the content and structure of your page through DOM updates.
 
@@ -25,7 +31,7 @@ The DOM tree view in the Chrome DevTools Elements panel displays the DOM structu
 Use the **Elements panel** to inspect all elements in your page in one
 DOM tree. Select any element and inspect the styles applied to it.
 
-<video autoplay muted src="animations/inspect-element.mp4">
+<video autoplay muted src="animations-img/inspect-element.mp4">
 </video>
 
 There are several ways to inspect an element:
@@ -48,6 +54,38 @@ to go into Inspect Element Mode, then click on an element.
 
 Use the [`inspect`][inspect] method in the console, such as
 `inspect(document.body)`.
+
+### View the rendered and natural sizes of an image {: #image-sizes }
+
+Hover over an `img` tag in the **DOM Tree** to view the rendered and natural sizes of that
+image.
+
+![Rendered and natural image sizes](imgs/image-sizes.png)
+
+### View which image in a source set (srcset) is being used {: #srcset }
+
+To view which version of an image in a `srcset` was loaded, select the `img` element,
+then evaluate `$0.currentSrc` in the **Console**.
+
+Note: See [Enhance `img`s with `srcset` for high DPI devices][srcset] to learn more about image
+optimization using `srcset`.
+
+[srcset]: /web/fundamentals/design-and-ux/responsive/images#enhance_imgs_with_srcset_for_high_dpi_devices
+
+![currentSrc in the Console][currentSrc console]
+
+[currentSrc console]: /web/tools/chrome-devtools/inspect-styles/imgs/currentSrc-console.png
+
+Note: `$0` is a shortcut in the DevTools **Console**. It provides a reference to the
+currently-selected element in the **DOM Tree**.
+
+You can also view `currentSrc` via the **Properties** tab. The **Properties** tab only displays
+properties for the currently-selected element, so make sure that you've selected the
+correct element before viewing.
+
+![currentSrc in the Properties tab][currentSrc properties]
+
+[currentSrc properties]: /web/tools/chrome-devtools/inspect-styles/imgs/currentSrc-properties.png
 
 ## Navigate the DOM
 
@@ -110,7 +148,7 @@ To edit a DOM node name or attribute:
 
 The closing tag is automatically updated when you're finished.
 
-<video autoplay muted src="animations/edit-element-name.mp4">
+<video autoplay muted src="animations-img/edit-element-name.mp4">
 </video>
 
 ### Edit DOM node and its children as HTML
@@ -129,7 +167,7 @@ To edit a DOM node and its children as HTML:
 
 Click, hold, and drag a node to move it.
 
-<video autoplay muted src="animations/move-node.mp4">
+<video autoplay muted src="animations-img/move-node.mp4">
 </video>
 
 ## Delete DOM node
@@ -343,3 +381,7 @@ To show or hide HTML comments in the Elements panel:
 To show or hide HTML comments in the **Elements** panel, [open
 **Settings**](#settings), go to the **Preferences** panel, find the
 **Elements** section, and then toggle the **Show HTML comments** checkbox.
+
+## Feedback {: #feedback }
+
+{% include "web/_shared/helpful.html" %}

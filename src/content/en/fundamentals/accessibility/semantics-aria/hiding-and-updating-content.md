@@ -1,9 +1,10 @@
-project_path: /web/_project.yaml
+project_path: /web/fundamentals/_project.yaml
 book_path: /web/fundamentals/_book.yaml
 description: Hiding content from assistive technology
 
 
-{# wf_updated_on: 2016-10-04 #}
+{# wf_blink_components: Blink>Accessibility #}
+{# wf_updated_on: 2020-03-22 #}
 {# wf_published_on: 2016-10-04 #}
 
 # Hiding and Updating Content {: .page-title }
@@ -36,14 +37,14 @@ still included in the accessibility tree. One common technique is to include
       height: 1px;
       overflow: hidden;
     }
-    
+
 
 Also, as we have seen, it's possible to provide screen reader only text via an
 `aria-label`, `aria-labelledby`, or `aria-describedby` attribute referencing an
 element that is otherwise hidden.
 
 See this WebAIM article on [Techniques for hiding
-text](http://webaim.org/techniques/css/invisiblecontent/#techniques){: .external }
+text](https://webaim.org/techniques/css/invisiblecontent/#techniques){: .external }
 for more information on creating "screen reader only" text.
 
 Finally, ARIA provides a mechanism for excluding content from assistive
@@ -95,13 +96,13 @@ attention to it by setting its `aria-live` attribute. Compare this plain `div`
 
 
     <div class="status">Your message has been sent.</div>
-    
+
 
 with its "live" counterpart.
 
 
     <div class="status" aria-live="polite">Your message has been sent.</div>
-    
+
 
 `aria-live` has three allowable values: `polite`, `assertive`, and `off`.
 
@@ -115,7 +116,7 @@ with its "live" counterpart.
    server error and your changes are not saved; please refresh the page", or
    updates to an input field as a direct result of a user action, such as
    buttons on a stepper widget.
- - `aria-live="off"` tells assistive technology to temporarly suspend
+ - `aria-live="off"` tells assistive technology to temporarily suspend
    `aria-live` interruptions.
 
 There are some tricks to making sure your live regions work correctly.
@@ -159,4 +160,7 @@ Finally, `aria-busy` lets you notify assistive technology that it should
 temporarily ignore changes to an element, such as when things are loading. Once
 everything is in place, `aria-busy` should be set to false to normalize the
 reader's operation.
- 
+
+## Feedback {: #feedback }
+
+{% include "web/_shared/helpful.html" %}

@@ -1,9 +1,10 @@
-project_path: /web/_project.yaml
+project_path: /web/fundamentals/_project.yaml
 book_path: /web/fundamentals/_book.yaml
 description: Introduction to ARIA and non-native HTML semantics
 
 
-{# wf_updated_on: 2017-07-24 #}
+{# wf_blink_components: Blink>Accessibility #}
+{# wf_updated_on: 2020-06-27 #}
 {# wf_published_on: 2016-10-04 #}
 
 # Introduction to ARIA {: .page-title }
@@ -113,12 +114,12 @@ with plain HTML.
 
     
 
- - And ARIA can make parts of the page "live", so they immediately inform
+ - And ARIA can make parts of the page "live," so they immediately inform
    assistive technology when they change.
 
 <div class="clearfix"></div>
 
-    <div aria-live="true">
+    <div aria-live="polite">
       <span>GOOG: $400</span>
     </div>
 
@@ -159,3 +160,6 @@ the [Landmark Roles Design
 Patterns](https://www.w3.org/TR/wai-aria-practices-1.1#kbd_layout_landmark_XHTML){: .external }
 spec for more information.
 
+## Feedback {: #feedback }
+
+{% include "web/_shared/helpful.html" %}

@@ -1,9 +1,10 @@
-project_path: /web/_project.yaml
-book_path: /web/tools/_book.yaml
+project_path: /web/tools/chrome-devtools/_project.yaml
+book_path: /web/tools/chrome-devtools/_book.yaml
 description: Follow along with this interactive guide to learn how to use  DevTools to diagnose forced synchronous layouts.
 
-{# wf_updated_on: 2017-07-24 #}
+{# wf_updated_on: 2020-07-10 #}
 {# wf_published_on: 2015-04-13 #}
+{# wf_blink_components: Platform>DevTools #}
 
 # Diagnose Forced Synchronous Layouts {: .page-title }
 
@@ -106,7 +107,7 @@ You should now see the function definition in the **Sources** panel.
 ![function definition in sources panel](imgs/definition.png)
 
 The `update()` function is the callback handler for 
-`requestAnimationCallback()`. The handler computes each image's `left` property
+`requestAnimationFrame()`. The handler computes each image's `left` property
 based off of the image's `offsetTop` value. This forces the browser to perform
 a new layout immediately to make sure that it provides the correct value. 
 Forcing a layout during every animation frame is the cause of the janky
@@ -140,3 +141,7 @@ animation truly is faster and more performant than before.
 ![timeline recording after optimization](imgs/after.png)
 
 Much better.
+
+## Feedback {: #feedback }
+
+{% include "web/_shared/helpful.html" %}

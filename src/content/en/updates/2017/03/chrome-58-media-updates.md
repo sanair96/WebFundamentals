@@ -1,14 +1,15 @@
 project_path: /web/_project.yaml
 book_path: /web/updates/_book.yaml
-description: A round up of the media updates in Chrome 58.
+description: A round up of the audio/video updates in Chrome 58.
 
-{# wf_updated_on: 2017-03-24 #}
+{# wf_updated_on: 2020-07-24 #}
 {# wf_published_on: 2017-03-21 #}
 {# wf_tags: news,chrome58,media #}
 {# wf_featured_image: /web/updates/images/generic/animations.png #}
 {# wf_featured_snippet: Media controls customization, Autoplay for Progressive Web Apps added to the home screen, pause the autoplaying of muted video when invisible, and color-gamut media query are there! #}
+{# wf_blink_components: Blink>Media #}
 
-# Media Updates in Chrome 58 {: .page-title }
+# Audio/Video Updates in Chrome 58 {: .page-title }
 
 {% include "web/_shared/contributors/beaufortfrancois.html" %}
 
@@ -39,11 +40,11 @@ download, fullscreen and [remoteplayback] buttons using the new [ControlsList AP
 </div>
 
 This API offers a way to show or hide native media controls that do not make
-sense or are not part of the expected user experience, or only whitelist a
+sense or are not part of the expected user experience, or only allow a
 limited set of features.
 
-The current implementation for now is a blacklist mechanism on native controls
-with the ability to set them directly from HTML content using the new 
+The current implementation for now is blocklist mechanism on native controls
+with the ability to set them directly from HTML content using the new
 attribute `controlsList`. Check out the [official
 sample](https://googlechrome.github.io/samples/media/controlslist.html).
 
@@ -52,17 +53,20 @@ sample](https://googlechrome.github.io/samples/media/controlslist.html).
 Usage in HTML:
 
 <pre class="prettyprint lang-html">
-&lt;video controls <b>controlsList="nofullscreen nodownload noremote foobar"</b>>&lt;/video>
+&lt;video controls <b>controlsList="nofullscreen nodownload noremoteplayback"</b>>&lt;/video>
 </pre>
 
 Usage in JavaScript:
 
     var video = document.querySelector('video');
     video.controls; // true
-    video.controlsList; // "nofullscreen nodownload noremote" - "foobar" not present
-    video.controlsList.remove('noremote');
-    video.controlsList; // "nofullscreen nodownload" - "noremote" not present
+    video.controlsList; // ["nofullscreen", "nodownload", "noremoteplayback"]
+    video.controlsList.remove('noremoteplayback');
+    video.controlsList; // ["nofullscreen", "nodownload"]
     video.getAttribute('controlsList'); // "nofullscreen nodownload"
+
+    video.controlsList.supports('foo'); // false
+    video.controlsList.supports('noremoteplayback'); // true
 
 [Intent to Ship](https://groups.google.com/a/chromium.org/forum/#!topic/blink-dev/tFuQd3AcsIQ/discussion) &#124;
 [Chromestatus Tracker](https://www.chromestatus.com/feature/5737006365671424) &#124;
@@ -134,11 +138,11 @@ approximate range of colors supported by Chrome and output devices using the
 `color-gamut` media query.
 
 If you're not familiar yet with the definitions of color space, color profile,
-gamut, wide-gamut and color depth, I highly recommend you read the 
+gamut, wide-gamut and color depth, I highly recommend you read the
 [Improving Color on the Web] WebKit blog post. It goes into much detail on how
 to use the `color-gamut` media query to serve wide-gamut images when the user
 is on wide-gamut displays and fallback to sRGB images otherwise.
- 
+
 The current implementation in Chrome accepts the `srgb`, `p3` (gamut specified
 by the DCI P3 Color Space), and `rec2020` (gamut specified by the ITU-R
 Recommendation BT.2020 Color Space) keywords. Check out the [official
@@ -159,13 +163,13 @@ Usage in CSS:
     main {
       background-image: url("photo-srgb.jpg");
     }
-    
+
     @media (color-gamut: p3) {
       main {
         background-image: url("photo-p3.jpg");
       }
     }
-    
+
     @media (color-gamut: rec2020) {
       main {
         background-image: url("photo-rec2020.jpg");
@@ -178,7 +182,7 @@ Usage in JavaScript:
     if (window.matchMedia("(color-gamut: srgb)").matches) {
       document.querySelector('main').style.backgroundImage = 'url("photo-srgb.jpg")';
     }
-    
+
     if (window.matchMedia("(color-gamut: p3)").matches) {
       document.querySelector('main').style.backgroundImage = 'url("photo-p3.jpg")';
     }
@@ -188,7 +192,9 @@ Usage in JavaScript:
     }
 
 <p>For info, this screen currently supports approximately:</p>
+
 {% framebox height="100%" %}
+
 <style>
   ul {
     padding: 0;
@@ -211,25 +217,25 @@ Usage in JavaScript:
     the gamut specified by the ITU-R Recommendation BT.2020 Color Space or more.
   </li>
 </ul>
+
 <script>
-  document.querySelector('#srgb').innerHTML = 
+  document.querySelector('#srgb').innerHTML =
       (window.matchMedia("(color-gamut: srgb)").matches) ? '&#x2714;' : '&#x274C;';
   document.querySelector('#p3').innerHTML =
-      (window.matchMedia("(color-gamut: p3)").matches) ? '&#x27014;' : '&#x274C;';
+      (window.matchMedia("(color-gamut: p3)").matches) ? '&#x2714;' : '&#x274C;';
   document.querySelector('#rec2020').innerHTML =
       (window.matchMedia("(color-gamut: rec2020)").matches) ? '&#x2714;' : '&#x274C;';
 </script>
+
 {% endframebox %}
 
 [Intent to Ship](https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/36CcloDrB3E/1wMSNMl9BQAJ) &#124;
 [Chromestatus Tracker](https://www.chromestatus.com/feature/5354410980933632) &#124;
 [Chromium Bug](https://bugs.chromium.org/p/chromium/issues/detail?id=685456)
 
-{% include "comment-widget.html" %}
-
 [remoteplayback]: https://w3c.github.io/remote-playback/
 [ControlsList API]: https://github.com/WICG/controls-list/blob/gh-pages/explainer.md
 [improved Add to Home screen]: https://blog.chromium.org/2017/02/integrating-progressive-web-apps-deeply.html
-[web app manifest]: /web/fundamentals/engage-and-retain/web-app-manifest/
+[web app manifest]: /web/fundamentals/web-app-manifest
 [Improving Color on the Web]: https://webkit.org/blog/6682/improving-color-on-the-web/
 [switch between encrypted and clear streams]: /web/updates/2017/03/mixing-streams

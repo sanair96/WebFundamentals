@@ -3,7 +3,7 @@ book_path: /web/fundamentals/_book.yaml
 description: tabindex による DOM 順序の変更
 
 
-{# wf_updated_on: 2016-10-04 #}
+{# wf_updated_on: 2019-06-08 #}
 {# wf_published_on: 2016-10-04 #}
 
 # tabindex の使用 {: .page-title }
@@ -208,7 +208,7 @@ tabindex の移動を機能させるには、現在アクティブな子を除�
   </radio-group>
 </div>
 
-<script src="https://cdn.rawgit.com/webcomponents/custom-elements/master/custom-elements.min.js"></script>
+<script src="https://www.gstatic.com/devrel-devsite/v9dcc115658e2b070ea1ae9baed63d566/developers/js/custom-elements.min.js"></script>
 
 <script>
   class RadioButton extends HTMLElement {
@@ -327,7 +327,7 @@ GitHub で[この要素の完成版ソース](https://gist.github.com/robdodson/
 
 ##  モーダルとキーボードのトラップ
 
-フォーカスを管理するとき、解決できない状況に陥ることがあります。たとえばフォーカスを管理し、タブの動作をキャプチャする自動入力ウィジェットの場合、入力が完了するまでユーザーはそこから移動できなくなります。これは*キーボード トラップ*と呼ばれ、ユーザーにかなりのストレスを与えるおそれがあります。Web AIM チェックリストのセクション 2.1.2 で、この問題に言及しており、[キーボード フォーカスを特定のページ要素にロックして、閉じ込めてはいけない](http://webaim.org/standards/wcag/checklist#sc2.1.2){: .external }と説明しています。ユーザーがキーボードのみを使用してすべてのページ要素を自由に移動できるようにする必要があります。
+フォーカスを管理するとき、解決できない状況に陥ることがあります。たとえばフォーカスを管理し、タブの動作をキャプチャする自動入力ウィジェットの場合、入力が完了するまでユーザーはそこから移動できなくなります。これは*キーボード トラップ*と呼ばれ、ユーザーにかなりのストレスを与えるおそれがあります。Web AIM チェックリストのセクション 2.1.2 で、この問題に言及しており、[キーボード フォーカスを特定のページ要素にロックして、閉じ込めてはいけない](https://webaim.org/standards/wcag/checklist#sc2.1.2){: .external }と説明しています。ユーザーがキーボードのみを使用してすべてのページ要素を自由に移動できるようにする必要があります。
 
 
 

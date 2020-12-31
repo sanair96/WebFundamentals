@@ -2,11 +2,13 @@ project_path: /web/_project.yaml
 book_path: /web/ilt/pwa/_book.yaml
 
 {# wf_auto_generated #}
-{# wf_updated_on: 2017-06-14T23:30:28Z #}
+{# wf_blink_components: N/A #}
+{# wf_updated_on: 2019-04-26 #}
 {# wf_published_on: 2016-01-01 #}
 
 
 # E-Commerce Lab 3: Payment Request API {: .page-title }
+{% include "web/ilt/pwa/_shared/update.html" %}
 
 
 
@@ -84,7 +86,7 @@ The Payment Request API is not yet supported on desktop as of Chrome 58, so you 
 
 First, let's add add a feature detection for the Payment Request API. And if it's available, let a user process payment with it.
 
-Replace "TODO PAY-2.1" in __app/scripts/modules/app.js__ with the following code and remove the dummy conditional of `if (false) {` to add PaymentRequest feature detection:
+Replace "TODO PAY-2.1" in __app/scripts/modules/app.js__ with the following code and remove the placeholder conditional of `if (false) {` to add PaymentRequest feature detection:
 
 #### app.js
 
@@ -536,5 +538,3 @@ To learn more about the Payment Request API, visit the following links.
 *  [https://paymentrequest.show/demo/](https://paymentrequest.show/demo/)
 *  [https://googlechrome.github.io/samples/paymentrequest/](https://googlechrome.github.io/samples/paymentrequest/)
 *  [https://woocommerce.paymentrequest.show/](https://woocommerce.paymentrequest.show/)
-
-

@@ -1,8 +1,8 @@
-project_path: /web/_project.yaml
-book_path: /web/tools/_book.yaml
+project_path: /web/tools/chrome-devtools/_project.yaml
+book_path: /web/tools/chrome-devtools/_book.yaml
 description: Log konsol adalah cara andal untuk memeriksa apa yang dilakukan laman atau aplikasi Anda. Mari kita mulai dengan console.log() dan mendalami penggunaan tingkat lanjut lainnya.
 
-{# wf_updated_on: 2015-05-11 #}
+{# wf_updated_on: 2020-07-10 #}
 {# wf_published_on: 2015-04-13 #}
 
 # Diagnosis dan Penulisan Log ke Konsol {: .page-title }
@@ -203,7 +203,7 @@ Cobalah kode ini:
 
 ### Memformat elemen DOM sebagai objek JavaScript
 
-Secara default, log elemen DOM dimasukkan ke konsol sebagai representasi dari HTML-nya, namun kadang-kadang Anda perlu mengakses elemen DOM sebagai objek JavaScript dan memeriksa propertinya. Anda bisa menggunakan specifier string `%o` untuk melakukannya (lihat di atas), atau menggunakan `console.dir` untuk mencapai hasil yang sama: 
+Secara default, log elemen DOM dimasukkan ke konsol sebagai representasi dari HTML-nya, namun kadang-kadang Anda perlu mengakses elemen DOM sebagai objek JavaScript dan memeriksa propertinya. Anda bisa menggunakan specifier string `%O` untuk melakukannya (lihat di atas), atau menggunakan `console.dir` untuk mencapai hasil yang sama: 
 
 ![Membuat log elemen dengan menggunakan dir()](images/dir-element.png)
 

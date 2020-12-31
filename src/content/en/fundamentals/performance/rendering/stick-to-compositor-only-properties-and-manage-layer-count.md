@@ -1,9 +1,10 @@
-project_path: /web/_project.yaml
+project_path: /web/fundamentals/_project.yaml
 book_path: /web/fundamentals/_book.yaml
 description: Compositing is where the painted parts of the page are put together for displaying on screen.
 
-{# wf_updated_on: 2015-03-20 #}
+{# wf_updated_on: 2018-08-17 #}
 {# wf_published_on: 2015-03-20 #}
+{# wf_blink_components: Blink>Compositing #}
 
 # Stick to Compositor-Only Properties and Manage Layer Count {: .page-title }
 
@@ -26,7 +27,7 @@ The best-performing version of the pixel pipeline avoids both layout and paint, 
 
 <img src="images/stick-to-compositor-only-properties-and-manage-layer-count/frame-no-layout-paint.jpg"  alt="The pixel pipeline with no layout or paint.">
 
-In order to achieve this you will need to stick to changing properties that can be handled by the compositor alone. Today there are only two properties for which that is true: **`transforms`** and **`opacity`**:
+In order to achieve this you will need to stick to changing properties that can be handled by the compositor alone. Today there are only two properties for which that is true - `transform`s and `opacity`:
 
 <img src="images/stick-to-compositor-only-properties-and-manage-layer-count/safe-properties.jpg"  alt="The properties you can animate without triggering layout or paint.">
 
@@ -94,3 +95,7 @@ This option will bring up a new view that allows you to pan, scan and zoom in on
 <img src="images/stick-to-compositor-only-properties-and-manage-layer-count/layer-view.jpg"  alt="The layer view in Chrome DevTools.">
 
 Using this view you can track the number of layers you have. If you’re spending a lot time in compositing during performance-critical actions like scrolling or transitions (you should aim for around **4-5ms**), you can use the information here to see how many layers you have, why they were created, and from there manage layer counts in your app.
+
+## Feedback {: #feedback }
+
+{% include "web/_shared/helpful.html" %}

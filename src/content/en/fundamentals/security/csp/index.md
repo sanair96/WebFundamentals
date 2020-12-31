@@ -1,9 +1,9 @@
-project_path: /web/_project.yaml
+project_path: /web/fundamentals/_project.yaml
 book_path: /web/fundamentals/_book.yaml
 description: Content Security Policy can significantly reduce the risk and impact of cross-site scripting attacks in modern browsers.
 
 {# wf_published_on: 2012-06-15 #}
-{# wf_updated_on: 2017-08-11 #}
+{# wf_updated_on: 2020-06-19 #}
 {# wf_blink_components: Blink>SecurityFeature #}
 
 # Content Security Policy {: .page-title }
@@ -35,13 +35,13 @@ This overview highlights a defense that can significantly reduce the risk and
 impact of XSS attacks in modern browsers: Content Security Policy (CSP).
 
 ### TL;DR {: .hide-from-toc }
-* Use whitelists to tell the client what's allowed and what isn't.
+* Use allowlists to tell the client what's allowed and what isn't.
 * Learn what directives are available.
 * Learn the keywords they take.
 * Inline code and `eval()` are considered harmful.
 * Report policy violations to your server before enforcing them.
 
-## Source whitelists
+## Source allowlists
 
 
 The issue exploited by XSS attacks is the browser's inability to distinguish
@@ -49,16 +49,16 @@ between script that's part of your application and script that's been
 maliciously injected by a third-party. For example, the Google +1 button at the
 bottom of this page loads and executes code from
 `https://apis.google.com/js/plusone.js` in the context of this page's origin. We
-trust that code, but we can't expect the browser to figure out on it's own that
-code from `apis.google.com` is awesome, while code from `apis.evil.example.com`
+trust that code, but we can't expect the browser to figure out on its own that code
+from `apis.google.com` is awesome, while code from `apis.evil.example.com`
 probably isn't. The browser happily downloads and executes any code a page
 requests, regardless of source.
 
 Instead of blindly trusting _everything_ that a server delivers, CSP defines the
-`Content-Security-Policy` HTTP header, which allows you to create a whitelist of
+`Content-Security-Policy` HTTP header, which allows you to create an allowlist of
 sources of trusted content, and instructs the browser to only execute or render
 resources from those sources. Even if an attacker can find a hole through which
-to inject script, the script won't match the whitelist, and therefore won't be
+to inject script, the script won't match the allowlist, and therefore won't be
 executed.
 
 Since we trust `apis.google.com` to deliver valid code, and we trust ourselves
@@ -89,7 +89,7 @@ than the success they were expecting.
 While script resources are the most obvious security risks, CSP provides a rich
 set of policy directives that enable fairly granular control over the resources
 that a page is allowed to load. You've already seen `script-src`, so the concept
-should be clear. 
+should be clear.
 
 Let's quickly walk through the rest of the resource directives. The list below
 represents the state of the directives as of level 2. A [level 3
@@ -100,7 +100,7 @@ browsers.
 * **`base-uri`** restricts the URLs that can appear in a page's `<base>` element.
 * **`child-src`** lists the URLs for workers and embedded frame contents. For
   example: `child-src https://youtube.com` would enable embedding videos from
-  YouTube but not from other origins. 
+  YouTube but not from other origins.
 * **`connect-src`** limits the origins that you can connect to (via XHR,
   WebSockets, and EventSource).
 * **`font-src`** specifies the origins that can serve web fonts. Google's web
@@ -216,7 +216,7 @@ inside of an `<iframe>` with a `sandbox` attribute. This can have a wide range o
 effects on the page: forcing the page into a unique origin, and preventing form
 submission, among others. It's a bit beyond the scope of this article, but you
 can find full details on valid sandboxing attributes in the
-["Sandboxing" section of the HTML5 spec](https://developers.whatwg.org/origin-0.html#sandboxing)..
+["Sandboxing" section of the HTML5 spec](https://html.spec.whatwg.org/dev/origin.html#sandboxing)..
 
 ### The meta tag
 
@@ -228,13 +228,13 @@ an `http-equiv` attribute:
     <meta http-equiv="Content-Security-Policy" content="default-src https://cdn.example.net; child-src 'none'; object-src 'none'">
 
 
-This can't be used for frame-ancestors, report-uri, or sandbox.
+This can't be used for `frame-ancestors`, `report-uri`, or `sandbox`.
 
 ## Inline code is considered harmful
 
-It should be clear that CSP is based on whitelisting origins, as that's an
+It should be clear that CSP is based on allowlist origins, as that's an
 unambiguous way of instructing the browser to treat specific sets of resources
-as acceptable and to reject the rest. Origin-based whitelisting doesn't,
+as acceptable and to reject the rest. Origin-based allowlists don't,
 however, solve the biggest threat posed by XSS attacks: inline script injection.
 If an attacker can inject a script tag that directly contains some malicious
 payload (<code>&lt;script&gt;sendMyDataToEvilDotCom();&lt;/script&gt;</code>),
@@ -271,7 +271,7 @@ to something more like:
     function doAmazingThings() {
       alert('YOU AM AMAZING!');
     }
-    document.addEventListener('DOMContentReady', function () {
+    document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('amazing')
         .addEventListener('click', doAmazingThings);
     });
@@ -287,12 +287,13 @@ code if you do the work to move code into external resources.
 Inline style is treated in the same way: both the `style` attribute and `style`
 tags should be consolidated into external stylesheets to protect against a
 variety of [surprisingly
-clever](http://scarybeastsecurity.blogspot.com/2009/12/generic-cross-browser-cross-domain.html)
+clever](https://scarybeastsecurity.blogspot.com/2009/12/generic-cross-browser-cross-domain.html)
 data exfiltration methods that CSS enables.
 
 If you must have inline script and style, you can enable it
-by adding `'unsafe-inline'` as an allowed source in a `script-src` or `style-
-src` directive. You can also use a nonce or a hash (see below), but you really shouldn't. Banning inline script is the biggest security win CSP provides, and
+by adding `'unsafe-inline'` as an allowed source in a `script-src` or `style-src`
+directive. You can also use a nonce or a hash (see below), but you really shouldn't.
+Banning inline script is the biggest security win CSP provides, and
 banning inline style likewise hardens your application. It's a little bit of
 effort up front to ensure that things work correctly after moving all the code
 out-of-line, but that's a tradeoff that's well worth making.
@@ -300,7 +301,7 @@ out-of-line, but that's a tradeoff that's well worth making.
 ### If you absolutely must use it ...
 
 CSP Level 2 offers backward compatibility for inline scripts by allowing you to
-whitelist specific inline scripts using either a cryptographic nonce (number
+add specific inline scripts to the allowlist using either a cryptographic nonce (number
 used once) or a hash. Although this may be cumbersome, it is useful
 in a pinch.
 
@@ -308,8 +309,8 @@ To use a nonce, give your script tag a nonce attribute. Its value must match one
 in the list of trusted sources. For example:
 
 
-    <script nonce=EDNnf03nceIOfn39fn3e9h3sdfa>
-      //Some inline code I cant remove yet, but need to asap.
+    <script nonce="EDNnf03nceIOfn39fn3e9h3sdfa">
+      // Some inline code I can't remove yet, but need to asap.
     </script>
 
 
@@ -333,8 +334,8 @@ Your policy would contain this:
     Content-Security-Policy: script-src 'sha256-qznLcsROx4GACP2dm0UCKCzCG-HiZ1guq6ZZDob_Tng='
 
 There are a few things to note here. The `sha*-` prefix specifies the algorithm
-that generates the hash. In the example above, sha256- is used. CSP also
-supports sha384- and sha512-. When generating the hash do not include the
+that generates the hash. In the example above, `sha256-` is used. CSP also
+supports `sha384-` and `sha512-`. When generating the hash, do not include the
 `<script>` tags. Also capitalization and whitespace matter, including leading or
 trailing whitespace.
 
@@ -358,7 +359,7 @@ This has more than a few impacts on the way you build applications:
 
 *   You must parse JSON via the built-in `JSON.parse`, rather than relying on
     `eval`. Native JSON operations are available in
-    [every browser since IE8](http://caniuse.com/#feat=json), and they're
+    [every browser since IE8](https://caniuse.com/#feat=json), and they're
     completely safe.
 *   Rewrite any `setTimeout` or `setInterval` calls you're currently making
     with inline functions rather than strings. For example:
@@ -452,10 +453,10 @@ turn up; when you're satisfied with its effect, start enforcing the new policy.
 ## Real World Usage
 
 CSP 1 is quite usable in Chrome, Safari, and Firefox, but has very limited
-support in IE 10. You can <a href="http://caniuse.com/#feat=contentsecuritypolicy">
+support in IE 10. You can <a href="https://caniuse.com/#feat=contentsecuritypolicy">
 view specifics at caniuse.com</a>. CSP Level 2 has been available in Chrome since
 version 40. Massive sites like Twitter and Facebook have deployed the header
-(<a href="https://blog.twitter.com/2011/improving-browser-security-with-csp">Twitter's
+(<a href="https://blog.twitter.com/engineering/en_us/a/2011/improving-browser-security-with-csp.html">Twitter's
 case study</a> is worth a read), and the standard is very much ready
 for you to start deploying on your own sites.
 
@@ -478,7 +479,6 @@ Level 2 required you to change it to `child-src`. This is no longer necessary
 in CSP Level 3.
 
 * Facebook's [Like button](//developers.facebook.com/docs/plugins/like-button){: .external }
-
 has a number of implementation options. We recommend sticking with the
 `<iframe>` version as it's safely sandboxed from the rest of your site. It
 requires a `child-src https://facebook.com` directive to function properly. Note
@@ -537,7 +537,7 @@ overwrites the default for that specific type of resource.
 ## The future
 
 
-Content Security Policy Level 2 is a <a href="http://www.w3.org/TR/CSP2/">
+Content Security Policy Level 2 is a <a href="https://www.w3.org/TR/CSP2/">
 Candidate Recommendation</a>. The W3C's Web Application Security Working Group
 has already begun work on the specification's next iteration,
 [Content Security Policy Level 3](https://www.w3.org/TR/CSP3/){: .external }.
@@ -546,3 +546,7 @@ has already begun work on the specification's next iteration,
 If you're interested in the discussion around these upcoming features,
 [skim the public-webappsec@ mailing list archives](http://lists.w3.org/Archives/Public/public-webappsec/),
 or join in yourself.
+
+## Feedback {: #feedback }
+
+{% include "web/_shared/helpful.html" %}

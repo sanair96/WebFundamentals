@@ -3,7 +3,7 @@ book_path: /web/fundamentals/_book.yaml
 description: Modificación del orden en el DOM con tabindex
 
 
-{# wf_updated_on: 2016-10-04 #}
+{# wf_updated_on: 2019-06-08 #}
 {# wf_published_on: 2016-10-04 #}
 
 # Uso de tabindex {: .page-title }
@@ -120,7 +120,7 @@ el teclado también puedan interactuar con tu control.
 
 Es difícil conocer qué comportamientos de teclado implementar, pero existe un
 documento útil que puedes consultar. El
-sitio sobre las [prácticas para autores de apps de Internet enriquecidas accesibles (ARIA)](https://www.w3.org/TR/wai-aria-practices/){: .external } 
+sitio sobre las [prácticas para autores de apps de Internet enriquecidas accesibles (ARIA)](https://www.w3.org/TR/wai-aria-practices/){: .external }
 contiene una guía que enumera los tipos de componentes y qué tipos de acciones de teclado admiten.
 Hablaremos con mayor profundidad sobre ARIA más adelante, pero por ahora usemos la guía para
 ayudarnos a agregar compatibilidad con el teclado a un componente nuevo.
@@ -232,7 +232,7 @@ DevTools para observar el desplazamiento del tabindex de un botón de selección
   </radio-group>
 </div>
 
-<script src="https://cdn.rawgit.com/webcomponents/custom-elements/master/custom-elements.min.js"></script>
+<script src="https://www.gstatic.com/devrel-devsite/v9dcc115658e2b070ea1ae9baed63d566/developers/js/custom-elements.min.js"></script>
 
 <script>
   class RadioButton extends HTMLElement {
@@ -356,7 +356,7 @@ salir. Piensa en un widget para autocompletar que intente administrar el foco y 
 el comportamiento de pestañas, pero que evite que el usuario salga hasta que esté completo.
 Esto se llama una *trampa de teclado*, y puede ser muy molesta para el usuario.
 La sección 2.1.2 de la lista de comprobación de la Web AIM trata este tema y menciona que
-[el foco del teclado nunca debería bloquearse ni atraparse en un elemento de la página en especial](http://webaim.org/standards/wcag/checklist#sc2.1.2){: .external }.
+[el foco del teclado nunca debería bloquearse ni atraparse en un elemento de la página en especial](https://webaim.org/standards/wcag/checklist#sc2.1.2){: .external }.
 El usuario debería poder navegar desde todos los elementos de página y hacia los mismos usando únicamente el
 teclado.
 

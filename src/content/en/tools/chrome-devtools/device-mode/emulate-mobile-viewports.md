@@ -1,16 +1,18 @@
-project_path: /web/_project.yaml
-book_path: /web/tools/_book.yaml
+project_path: /web/tools/chrome-devtools/_project.yaml
+book_path: /web/tools/chrome-devtools/_book.yaml
 description: Chrome DevTools' Device Mode lets you mimic how your development  site will look in production on a range of devices.
+robots: noindex
 
-{# wf_updated_on: 2016-03-07 #}
+{# wf_updated_on: 2020-07-10 #}
 {# wf_published_on: 2015-04-13 #}
 {# wf_blink_components: Platform>DevTools #}
 
 # Test Responsive and Device-specific Viewports {: .page-title }
 
-{% include "web/_shared/contributors/pbakaus.html" %}
-{% include "web/_shared/contributors/megginkearney.html" %}
-{% include "web/_shared/contributors/kaycebasques.html" %}
+<aside class="warning">
+  <b>This page is deprecated</b>. There are links to up-to-date documentation
+  throughout the page.
+</aside>
 
 The updated Device Mode (since Chrome 49) is an integral part of the now-mobile-first DevTools and 
 extends the main DevTools bar. Learn how to use its controls to simulate a wide range of devices or 
@@ -25,15 +27,28 @@ go fully responsive.
 
 ## Using the viewport controls {: #viewport-controls }
 
+<aside class="warning">
+  <b>This page is deprecated</b>. See
+  <a href="/web/tools/chrome-devtools/device-mode/#responsive">Response Viewport Mode</a>
+  and
+  <a href="/web/tools/chrome-devtools/device-mode/#device">Mobile Device Viewport Mode</a>.
+</aside>
+
 ![device mode enabled](imgs/device-mode.png)
 
 The Viewport Controls allow you to test your site against a variety of devices, as well as fully 
 responsively. It comes in two modes:
 
   1. **Responsive**. Makes the Viewport freely resizable via big handles on either side. 
-  2. **Specific Device**. Locks the Viewport to the exact viewport size of a specific device and emulates certain device characteristics.
+  2. **Specific Device**. Locks the Viewport to the exact viewport size of a specific device and 
+  emulates certain device characteristics.
 
 ## Responsive mode
+
+<aside class="warning">
+  <b>This page is deprecated</b>. See
+  <a href="/web/tools/chrome-devtools/device-mode/#responsive">Response Viewport Mode</a>.
+</aside>
 
 We recommend using the **Responsive Mode** as your default work mode. Use it during active 
 development of your site and app and resize the viewport often to create a freely responsive design 
@@ -48,10 +63,20 @@ finer grained control.
 
 ## Device-specific mode
 
+<aside class="warning">
+  <b>This page is deprecated</b>. See
+  <a href="/web/tools/chrome-devtools/device-mode/#device">Mobile Device Viewport Mode</a>.
+</aside>
+
 Use the **Device-specific Mode** when you're nearing the end of active development and want to 
 perfect how your site looks like on specific mobiles (e.g. a certain iPhone or Nexus).
 
 ### Built-in device presets
+
+<aside class="warning">
+  <b>This page is deprecated</b>. See
+  <a href="/web/tools/chrome-devtools/device-mode/#device">Mobile Device Viewport Mode</a>.
+</aside>
 
 <div class="wf-devtools-flex">
   <div>
@@ -71,6 +96,11 @@ perfect how your site looks like on specific mobiles (e.g. a certain iPhone or N
 </div>
 
 ### Adding custom device presets
+
+<aside class="warning">
+  <b>This page is deprecated</b>. See
+  <a href="/web/tools/chrome-devtools/device-mode/#custom">Add a custom mobile device</a>.
+</aside>
 
 Device Mode offers a wide array of devices for emulation. You can add a 
 custom device if you find an edge-case or niche device that isn't covered. 
@@ -94,6 +124,11 @@ custom device if you find an edge-case or niche device that isn't covered.
 </div>
 
 ### Device states and orientation
+
+<aside class="warning">
+  <b>This page is deprecated</b>. See
+  <a href="/web/tools/chrome-devtools/device-mode/#orientation">Set orientation</a>.
+</aside>
 
 ![toggle orientation](imgs/change-orientation.png)
 
@@ -160,23 +195,6 @@ When emulating a specific device, the Device Mode toolbar shows an additional co
 
 Read on to learn more about the specific options.
 
-### User agent type
-
-The **User Agent Type**, or Device Type, setting let's you change the type of
-the device. Possible values are:
-
-  1. Mobile
-  2. Desktop
-  3. Desktop with touch
-
-Changing this setting will influence mobile viewport and touch event emulation
-and change the UA string. So if you'd like to create a responsive site for
-Desktop and want to test hover effects, switch to "Desktop" in Responsive Mode.
-
-**Tip**: You can also set the user agent in the [**Network conditions**][nc] 
-drawer.
-
-
 ### Device pixel ratio (DPR)
 
 If you want to emulate a Retina device from a non-Retina machine or vice 
@@ -196,7 +214,7 @@ Some examples of "Device Pixel Ratio" (DPR) sensitivity on the web are:
 * CSS [image-set](http://dev.w3.org/csswg/css-images/#image-set-notation) 
   rules.
 
-* The [srcset](/web/fundamentals/design-and-ui/media/images/images-in-markup) 
+* The [srcset](/web/fundamentals/design-and-ux/responsive/images#images-in-markup) 
   attribute on images.
 
 * The `window.devicePixelRatio` property.
@@ -209,7 +227,12 @@ pixelated.
 
 ### Media queries {: #media-queries }
 
-[Media queries](/web/fundamentals/design-and-ui/responsive/fundamentals/use-media-queries)
+<aside class="warning">
+  <b>This page is deprecated</b>. See
+  <a href="/web/tools/chrome-devtools/device-mode/#queries">Show media queries</a>.
+</aside>
+
+[Media queries](/web/fundamentals/design-and-ux/responsive/#use-media-queries)
 are an essential part of responsive web design.To view the media query inspector,
 click **Show Media queries** in the three dot menu. The DevTools detect media
 queries in your stylesheets and display them as colored bars in the top ruler.
@@ -220,7 +243,12 @@ queries in your stylesheets and display them as colored bars in the top ruler.
 
 Media queries are color-coded as follows:
 
-<style>#colortable { width: 60%; border: none; } #colortable td { border: none; } .max-width { background: #327ff2; width: 10%; } .max-and-min { background: #3b9903; width: 10%; } .min-width { background: #d4731f; width: 10%; }</style>
+<style>
+  #colortable { width: 60%; border: none; } #colortable td { border: none; } 
+  .max-width { background: #327ff2; width: 10%; } 
+  .max-and-min { background: #3b9903; width: 10%; }
+  .min-width { background: #d4731f; width: 10%; }
+</style>
 
 <table id="colortable">
   <tbody>
@@ -253,6 +281,11 @@ the definition in source code.
 
 ### Rulers
 
+<aside class="warning">
+  <b>This page is deprecated</b>. See
+  <a href="/web/tools/chrome-devtools/device-mode/#rulers">Show rulers</a>.
+</aside>
+
 Toggle this option to show pixel-based rulers next to the viewport.
 
 ### Configure network (UA, network throttling) {: #network }
@@ -282,15 +315,24 @@ Device Mode has some limitations.
 * **Browser functionality**
     * WebGL operates in the emulator, but is not supported on iOS 7 devices.
     * MathML is not supported in Chrome, but is supported on iOS 7 devices.
-    * The [iOS 5 orientation zoom bug](https://github.com/scottjehl/device-bugs/issues/2) is not emulated.
+    * [HLS playback](https://en.wikipedia.org/wiki/HTTP_Live_Streaming) (HTTP Live Streaming for 
+		video) is not supported while emulating, but is supported natively on Android Chrome and iOS.
+    * The [iOS 5 orientation zoom bug](https://github.com/scottjehl/device-bugs/issues/2) is not 
+		emulated.
     * The line-height CSS property operates in the emulator, but is not supported in Opera Mini.
-    * CSS rule limits, such as those in [Internet Explorer](http://blogs.msdn.com/b/ieinternals/archive/2011/05/14/10164546.aspx), are not emulated.
+    * CSS rule limits, such as those in 
+		[Internet Explorer](http://blogs.msdn.com/b/ieinternals/archive/2011/05/14/10164546.aspx), 
+		are not emulated.
 * **AppCache**
-    * The emulator does not override the <abbr title="User Agent">UA</abbr> for AppCache [manifest files](https://code.google.com/p/chromium/issues/detail?id=334120) or [view source requests](https://code.google.com/p/chromium/issues/detail?id=119767).
+    * The emulator does not override the <abbr title="User Agent">UA</abbr> for AppCache 
+		[manifest files](https://code.google.com/p/chromium/issues/detail?id=334120) or 
+		[view source requests](https://code.google.com/p/chromium/issues/detail?id=119767).
 
 Despite these limitations, the Device Mode is robust enough for most tasks. 
 When you need to test on a real device, you can use 
 [Remote Debugging](/web/tools/chrome-devtools/debug/remote-debugging) 
 for additional insight.
 
+## Feedback {: #feedback }
 
+{% include "web/_shared/helpful.html" %}

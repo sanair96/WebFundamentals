@@ -1,8 +1,8 @@
-project_path: /web/_project.yaml
-book_path: /web/tools/_book.yaml
+project_path: /web/tools/chrome-devtools/_project.yaml
+book_path: /web/tools/chrome-devtools/_book.yaml
 description:Chrome DevTools 的 Elements 面板中的 DOM 树视图可以显示当前网页的 DOM 结构。通过 DOM 更新实时修改页面的内容和结构。
 
-{# wf_updated_on: 2015-04-29 #}
+{# wf_updated_on: 2020-12-14 #}
 {# wf_published_on: 2015-04-29 #}
 
 # 编辑 DOM {: .page-title }
@@ -25,7 +25,7 @@ Chrome DevTools 的 Elements 面板中的 DOM 树视图可以显示当前网页�
 使用 **Elements** 面板可以在一个 DOM 树中检查页面中的所有元素。
 选择任何元素并检查应用到该元素的样式。
 
-<video autoplay muted src="animations/inspect-element.mp4">
+<video autoplay muted src="animations-img/inspect-element.mp4">
 </video>
 
 可以通过多种方式检查元素：
@@ -38,7 +38,7 @@ Chrome DevTools 的 Elements 面板中的 DOM 树视图可以显示当前网页�
 + <kbd class="kbd">C</kbd> (Windows) 或 <kbd class="kbd">Cmd</kbd>
 + <kbd class="kbd">Shift</kbd> + <kbd class="kbd">C</kbd> (Mac)，在 Inspect Element 模式下打开 DevTools，然后将鼠标悬停到某个元素上。
 DevTools 会在 **Elements** 面板中自动突出显示您悬停的元素。点击元素可以退出检查模式，同时保持元素在 **Elements** 面板中处于突出显示状态。
- 
+
 
 点击 **Inspect Element** 按钮 ![Inspect 图标](/web/tools/chrome-devtools/inspect-styles/imgs/inspect-icon.png){:.inline} 转到 Inspect Element 模式，然后点击元素。
 
@@ -73,7 +73,7 @@ DevTools 会在 **Elements** 面板中自动突出显示您悬停的元素。点
 
 ### 面包屑导航记录导航
 
-Elements 面板的底部是面包屑导航记录。 
+Elements 面板的底部是面包屑导航记录。
 
 ![面包屑导航记录](imgs/breadcrumb-body.png)
 
@@ -105,14 +105,14 @@ DevTools 会在记录中显示尽可能多的项目。如果状态栏无法显�
 
 完成后，结束标记将自动更新。
 
-<video autoplay muted src="animations/edit-element-name.mp4">
+<video autoplay muted src="animations-img/edit-element-name.mp4">
 </video>
 
 ### 以 HTML 形式编辑 DOM 节点及其子级
 
 要以 HTML 形式编辑 DOM 节点及其子级，请执行以下操作：
 
-* 打开 [more actions 菜单](#more-actions)并选择 **Edit as HTML**。 
+* 打开 [more actions 菜单](#more-actions)并选择 **Edit as HTML**。
 * 按 <kbd>F2</kbd> (Windows / Linux) 或 <kbd>Fn</kbd>+<kbd>F2</kbd> (Mac)。
 * 按 <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (Windows / Linux) 或 <kbd>Cmd</kbd>+<kbd>Enter</kbd> (Mac) 保存更改。
 * 按 <kbd>Esc</kbd> 可以退出编辑器而不保存。
@@ -123,7 +123,7 @@ DevTools 会在记录中显示尽可能多的项目。如果状态栏无法显�
 
 点击、按住并拖动节点可将其移动。
 
-<video autoplay muted src="animations/move-node.mp4">
+<video autoplay muted src="animations-img/move-node.mp4">
 </video>
 
 ## 删除 DOM 节点
@@ -133,7 +133,7 @@ DevTools 会在记录中显示尽可能多的项目。如果状态栏无法显�
 * 打开 [more actions 菜单](#more-actions)并选择 **Delete Node**。
 * 选择节点并按 <kbd>Delete</kbd> 键。
 
-注：如果您意外删除了节点，按 <kbd class='kbd'>Ctrl</kbd> + <kbd class='kbd'>Z</kbd>（Mac 上为 <kbd class='kbd'>Cmd</kbd> + <kbd class='kbd'>Z</kbd>）可以撤消您的上一步操作。
+Note: 如果您意外删除了节点，按 <kbd class='kbd'>Ctrl</kbd> + <kbd class='kbd'>Z</kbd>（Mac 上为 <kbd class='kbd'>Cmd</kbd> + <kbd class='kbd'>Z</kbd>）可以撤消您的上一步操作。
 
 ## 显示 more actions 菜单 {:#more-actions}
 
@@ -169,7 +169,7 @@ DevTools 会在记录中显示尽可能多的项目。如果状态栏无法显�
     //modify the element's subtree.
     var mySpan = document.createElement('span');
     element.appendChild( mySpan );
-    
+
 
 ### 属性修改
 
@@ -179,7 +179,7 @@ DevTools 会在记录中显示尽可能多的项目。如果状态栏无法显�
     var element = document.getElementById('main-content');
     // class attribute of element has been modified.
     element.className = 'active';
-    
+
 
 ### 节点移除
 
@@ -188,7 +188,7 @@ DevTools 会在记录中显示尽可能多的项目。如果状态栏无法显�
 
 
     document.getElementById('main-content').remove();
-    
+
 
 ## 与 DOM 断点交互
 
@@ -214,7 +214,7 @@ Elements 和 Sources 面板均包含一个用于管理 DOM 断点的窗格。
 ## 查看元素事件侦听器
 
 在 **Event Listeners** 窗格中查看与 DOM 节点关联的 JavaScript 事件侦听器。
- 
+
 
 ![Event Listeners 面板](imgs/event-listeners-pane.png)
 
@@ -245,7 +245,7 @@ Event Listeners 窗格中的顶级项目将显示具有已注册侦听器的事�
   </tbody>
 </table>
 
-注：许多 Chrome 扩展程序都会将其自己的事件侦听器添加到 DOM 上。如果您看到一些不是由您的代码设置的事件侦听器，您可能希望在[隐身窗口](https://support.google.com/chrome/answer/95464)中重新打开页面。默认情况下，隐身窗口会阻止扩展程序运行。
+Note: 许多 Chrome 扩展程序都会将其自己的事件侦听器添加到 DOM 上。如果您看到一些不是由您的代码设置的事件侦听器，您可能希望在[隐身窗口](https://support.google.com/chrome/answer/95464)中重新打开页面。默认情况下，隐身窗口会阻止扩展程序运行。
 
 ### 查看祖先实体事件侦听器
 
@@ -307,7 +307,7 @@ code for screenshot
 ![框架侦听器已启用](imgs/framework-listeners-enabled.png)
 
 如果停用 **Framework listeners** 复选框，事件侦听器代码很可能会在框架或内容库代码的其他地方解析。
- 
+
 
 ![框架侦听器已停用](imgs/framework-listeners-disabled.png)
 

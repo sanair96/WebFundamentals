@@ -1,9 +1,13 @@
-'use strict';
-
-/*
-    addCommitComment.js
-    Adds a comment to the current commit with the build status.
+/**
+ * @fileoverview Adds a comment to the current commit with the build status.
+ *
+ * @author Pete LePage <petele@google.com>
  */
+
+/* eslint no-console: 0 */
+
+
+'use strict';
 
 const fs = require('fs');
 const chalk = require('chalk');
@@ -13,25 +17,38 @@ const TEST_LOG_FILE = './test-results.json';
 
 console.log('Travis Add Commit Comment');
 
+/**
+ * Generates the message that is added to the PR
+ *
+ * @param {Object} gitData Information about the Git commit/PR
+ * @param {Object} testResults List of all errors/warnings from the tests
+ * @return {String} The commit message to post.
+ */
 function generateCommitMessage(gitData, testResults) {
-  if (testResults.errors.length === 0 && testResults.warnings.length === 0) {
+  if (!testResults ||
+      (testResults.errors.length === 0 && testResults.warnings.length === 0)) {
     return ':+1:';
   }
 
   let body = ['**Whoops!**\n\n'];
-  
+
   if (testResults.errors.length > 0) {
     body.push(`There were **${testResults.errors.length} critical errors** `);
-    body.push('that broke the build and prevented it from being automatically ');
-    body.push('deployed.\n\n');
+    body.push('that broke the build and prevented it from being ');
+    body.push('automatically deployed.\n\n');
   }
   if (testResults.warnings.length > 0) {
     body.push(`There were *${testResults.warnings.length} warnings* that `);
     body.push('will prevent this PR from being merged. Please take a look, ');
-    body.push('and either fix, or provide a justification for why they can\'t ');
-    body.push('be fixed.\n\n');
+    body.push('and either fix, or provide a justification for why they ');
+    body.push('can\'t be fixed.\n\n');
   }
 
+  /**
+   * Build the commit message
+   *
+   * @param {Array} msgs The list of warnings and errors
+   */
   function buildMessages(msgs) {
     msgs.forEach(function(msg) {
       let filename = msg.filename;
@@ -46,7 +63,7 @@ function generateCommitMessage(gitData, testResults) {
 
   if (testResults.errors.length > 0) {
     body.push('\n\n**ERRORS**\n');
-    buildMessages(testResults.errors);    
+    buildMessages(testResults.errors);
   }
 
   if (testResults.warnings.length > 0) {
@@ -62,18 +79,57 @@ function generateCommitMessage(gitData, testResults) {
 /**
  * Adds a commit comment on GitHub
  *
- * @param {Object} data The Travis information to update
+ * @param {Object} github The initialized GitHub API service
+ * @param {Object} gitInfo Info about the Git repo
  * @param {string} body The body of the message to post
  * @return {Promise} The result of the GitHub API push
  */
-function addCommitComment(gitInfo, body) {
-  let github = new GitHubApi({debug: false, Promise: Promise});
-  github.authenticate({type: 'oauth', token: gitInfo.token});
-  return github.repos.createCommitComment({
+function addPRComment(github, gitInfo, body) {
+  return github.issues.createComment({
     owner: gitInfo.repoOwner,
     repo: gitInfo.repoName,
-    sha: gitInfo.prSHA,
-    body: body
+    number: gitInfo.prNum,
+    body,
+  })
+  .then(() => console.log(chalk.green('✓'), 'PR comment posted'))
+  .catch((err) => {
+    console.log(chalk.red('✖'), 'Failed to post PR comment');
+    console.error(err);
+  });
+}
+
+/**
+ * Deletes a previous GitHub comment
+ *
+ * @param {Object} github The initialized GitHub API service
+ * @param {Object} gitInfo Info about the Git repo
+ * @return {Promise} Empty promise when completed.
+ */
+function deletePreviousPRComments(github, gitInfo) {
+  return github.issues.getComments({
+    owner: gitInfo.repoOwner,
+    repo: gitInfo.repoName,
+    number: gitInfo.prNum,
+  })
+  .then((issueCommentsData) => {
+    const issueComments = issueCommentsData || [];
+    const botIssues = issueComments.filter((issueComment) => {
+      return (issueComment.user.login === 'WebFundBot');
+    });
+    return Promise.all(
+      botIssues.map((botIssue) => {
+        return github.issues.deleteComment({
+          id: botIssue.id,
+          owner: gitInfo.repoOwner,
+          repo: gitInfo.repoName,
+        });
+      })
+    );
+  })
+  .then(() => console.log(chalk.green('✓'), 'Deleted previous bot comments'))
+  .catch((err) => {
+    console.log(chalk.red('✖'), 'Failed to delete previous bot comments');
+    console.error(err);
   });
 }
 
@@ -85,7 +141,7 @@ function addCommitComment(gitInfo, body) {
 function getTravisInfo() {
   return new Promise(function(resolve, reject) {
     let result = {
-      git: {}
+      git: {},
     };
 
     if (process.env.TRAVIS !== 'true') {
@@ -128,23 +184,23 @@ function getTravisInfo() {
     result.git.prSHA = prSHA;
     console.log(chalk.green('✓'), 'PR', chalk.cyan(prNum), chalk.cyan(prSHA));
 
-    let repoName;
-    let repoOwner;
     let repoSlug = process.env.TRAVIS_REPO_SLUG;
     if (!repoSlug || repoSlug.toLowerCase() !== 'google/webfundamentals') {
-      console.log(chalk.red('✖'), 'Repo', chalk.red('undefined'), '/', chalk.red('undefined'));
+      const undef = chalk.red('undefined');
+      console.log(chalk.red('✖'), 'Repo', undef, '/', undef);
       resolve(null);
       return;
     } else {
       result.git.repoName = 'WebFundamentals';
       result.git.repoOwner = 'Google';
-      console.log(chalk.green('✓'), 'Repo', chalk.cyan(result.git.repoOwner), chalk.cyan(result.git.repoName));
+      console.log(chalk.green('✓'), 'Repo',
+        chalk.cyan(result.git.repoOwner), chalk.cyan(result.git.repoName));
     }
     try {
       let contents = fs.readFileSync(TEST_LOG_FILE, 'utf8');
       result.testResults = JSON.parse(contents);
       console.log(chalk.green('✓'), 'Test File', chalk.cyan(TEST_LOG_FILE));
-    } catch(ex) {
+    } catch (ex) {
       console.log(chalk.red('✖'), 'Unable to parse test results.');
       resolve(null);
       return;
@@ -156,12 +212,14 @@ function getTravisInfo() {
 
 getTravisInfo()
   .then(function(data) {
-    if (data) {
-      let testResults = data.testResults;
-      let body = generateCommitMessage(data.git, testResults);
-      return addCommitComment(data.git, body)
-      .catch(function(err) {
-        console.log(chalk.red('✖'), err.message);
-      })
-    }
+    let testResults = data.testResults;
+    let body = generateCommitMessage(data.git, testResults);
+
+    let github = new GitHubApi({debug: false, Promise: Promise});
+    github.authenticate({type: 'oauth', token: data.git.token});
+    return deletePreviousPRComments(github, data.git)
+      .then(() => addPRComment(github, data.git, body));
+  })
+  .catch(function(err) {
+    console.log(chalk.red('✖'), err.message);
   });

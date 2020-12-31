@@ -1,9 +1,10 @@
-project_path: /web/_project.yaml
-book_path: /web/tools/_book.yaml
+project_path: /web/tools/chrome-devtools/_project.yaml
+book_path: /web/tools/chrome-devtools/_book.yaml
 description: Transform your JavaScript into a more readable form by clicking  the Pretty-Print icon in Chrome DevTools.
 
-{# wf_updated_on: 2016-02-21 #}
+{# wf_updated_on: 2020-07-10 #}
 {# wf_published_on: 2015-04-13 #}
+{# wf_blink_components: Platform>DevTools #}
 
 # Make JavaScript Look Pretty {: .page-title }
 
@@ -24,3 +25,7 @@ Here is how a minified script might look in the **Sources** panel:
 Here is how the same script looks after clicking the **Pretty-Print** icon:
 
 ![a minified script after pretty print](imgs/pretty-print-on.jpg)
+
+## Feedback {: #feedback }
+
+{% include "web/_shared/helpful.html" %}
